@@ -1,0 +1,133 @@
+:root {
+    --fuentePrincipal: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --colorFondoSeccion: url('https://refugiodelamontana.com/wp-content/uploads/2021/04/sembrar.jpg');
+    --colorFondoContenedor: rgba(0, 0, 0, 0.6);
+    --colorBordeContenedor: lightgray;
+    --colorTexto: whitesmoke;
+    --colorBoton: whitesmoke;
+    --colorHoverBoton: rgba(85, 107, 47, 0.9);
+    --colorError: red;
+    --anchoContenedor: 400px;
+    --altoContenedor: 750px;
+    --anchoInput: 300px;
+  }
+  
+  * {
+    font-family: var(--fuentePrincipal);
+    margin: 0;
+    padding: 0;
+  }
+  
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-image: var(--colorFondoSeccion);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .contenedor {
+    position: relative;
+    width: var(--anchoContenedor);
+    background-color: var(--colorFondoContenedor);
+    border: 2px solid var(--colorBordeContenedor);
+    border-radius: 8px;
+    height: var(--altoContenedor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0;
+  }
+  
+  h1 {
+    font-size: 2.3rem;
+    color: var(--colorTexto);
+    text-align: center;
+  }
+  
+  .input-contenedor {
+    position: relative;
+    margin: 30px 0;
+    width: var(--anchoInput);
+    border-bottom: 1px solid var(--colorTexto);
+  }
+  
+  .input-contenedor label {
+    position: absolute;
+    top: -20%;
+    left: 5px;
+    color: var(--colorTexto);
+    pointer-events: none;
+    font-weight: bold;
+  }
+  
+  .input-contenedor input {
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: -35px 0 5px;
+    color: var(--colorTexto);
+  }
+  
+  .input-contenedor svg {
+    position: absolute;
+    color: var(--colorTexto);
+    font-size: 1.6rem;
+    top: 20px;
+    right: 8px;
+  }
+  
+  .btn {
+    width: 100%;
+    height: 45px;
+    border-radius: 40px;
+    background-color: var(--colorBoton);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.4s;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+    background-color: var(--colorHoverBoton);
+    color: white;
+  }
+  
+  .registar {
+    font-size: 0.8rem;
+    color: var(--colorTexto);
+    text-align: center;
+    margin: 20px 0 10px;
+  }
+  
+  p {
+    text-decoration: none;
+    color: var(--colorTexto);
+    font-weight: 100;
+  }
+  
+  a {
+    color: var(--colorTexto);
+    font-weight: bold;
+  }
+  
+  a:hover {
+    color: rgb(85, 107, 47);
+  }
+  
+  .msg {
+    color: var(--colorError);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
