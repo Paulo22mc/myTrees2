@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -19,8 +17,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastName',
+        'number',
         'email',
         'password',
+        'address',
+        'country',
+        'role',
     ];
 
     /**
@@ -38,11 +41,20 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * Validar el rol de usuario.
+     */
+    public function isAdministrator()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->role === 'administrator';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'user';
     }
 }
