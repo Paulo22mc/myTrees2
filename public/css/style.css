@@ -1,0 +1,164 @@
+:root {
+    --letra: telegraf;
+    --grisClaro: #e0e2e4;
+    --blanco: rgb(236, 235, 235);
+    --negro: black;
+    --gris: #dfdfdf;
+    --verdeOscuro: #498048;
+    --colorFondoCard: rgba(0, 0, 0, 0.7);
+    --colorTextoCard: #ffffff;
+    --colorBordeCard: rgba(255, 255, 255, 0.2);
+    --colorFondoSection: #ffffff;
+    --colorBordeSection: var(--verdeOscuro);
+    --alturaHeader: 80px; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--letra);
+}
+
+html, body {
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    padding-top: 40px;
+}
+
+footer {
+    background-color: var(--verdeOscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px calc(5% + 20px);
+    z-index: 100000;
+    background-color: var(--blanco);
+    transition: 0.6s;
+    height: var(--alturaHeader); 
+}
+
+header svg {
+    color: var(--negro);
+}
+
+header svg:hover {
+    color: var(--blanco);
+}
+
+header .namePage {
+    font-weight: 700;
+    color: var(--negro);
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    list-style: none;
+}
+
+header ul li a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--negro);
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: 0.6s;
+}
+
+header.scroll-active {
+    background-color: var(--verdeOscuro);
+    transition: 0.3s background-color ease;
+}
+
+header.scroll-active .namePage, 
+header.scroll-active ul li a {
+    color: var(--blanco); 
+}
+
+.sectionMessage {
+    background-color: var(--colorFondoSection);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 25%; 
+    padding: 10px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--colorBordeSection);
+    display: flex;             
+    justify-content: center;    
+    align-items: center;       
+    font-size: 18px;
+    text-align: center;         
+}
+
+.card-container {
+    background-image: url('https://s1.1zoom.me/b5050/224/Forests_Trees_Moss_596391_1920x1080.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: calc(100vh - var(--alturaHeader)); 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; 
+    padding: 50px; 
+}
+
+.card {
+    background-color: var(--colorFondoCard);
+    color: var(--colorTextoCard);
+    border: 1px solid var(--colorBordeCard);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: auto;
+    width: 30%;
+    height: 200px; 
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); 
+}
+
+.card h3 {
+    color: var(--colorTextoCard);
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--colorTextoCard);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.contenedorImagen {
+    width: 100%;
+    background-size: cover;
+}
