@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
   <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
+  <link rel="icon" href="{{ asset('images/icon.png') }}" type="image/png">
 </head>
 
 <body>
@@ -51,11 +52,6 @@
           <div class="input-contenedor">
             <label for="password">Password</label>
             <input id="password" type="password" name="password" required>
-          </div>
-
-          <div class="input-contenedor">
-            <label for="confirmPassword">Confirm Password</label>
-            <input id="password" type="confirmPassword" name="password" required>
           </div>
 
           <div class="input-contenedor">
