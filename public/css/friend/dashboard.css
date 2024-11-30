@@ -1,0 +1,84 @@
+:root {
+    --fondoPagina: url('https://wallpapers.com/images/hd/top-view-4k-forest-coniferous-trees-vbawjneo63f4bxv5.jpg');
+    --colorTexto: white;
+    --colorFondoTransparente: rgba(0, 0, 0, 0.5);
+    --fuentePrincipal: Arial, sans-serif;
+    --espaciadoPequeno: 15px;
+    --espaciadoMedio: 20px;
+    --espaciadoGrande: 40px;
+    --anchoContenedor: 70%;
+    --anchoMaximoImagen: 550px;
+    --anchoMaximoAboutUs: 800px;
+    --colorSocialMedia: white;
+}
+
+body {
+    background-image: var(--fondoPagina);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    font-family: var(--fuentePrincipal);
+}
+
+.containerImage {
+    display: flex;
+    margin: 0 auto;
+    width: var(--anchoContenedor);
+    background-size: cover;
+    height: auto;
+}
+
+.sectionMessage {
+    color: var(--colorTexto);
+    padding: var(--espaciadoMedio);
+    background-color: var(--colorFondoTransparente);
+}
+
+.containerImage img {
+    max-width: var(--anchoMaximoImagen);
+    height: auto;
+}
+
+.aboutUs {
+    background-color: var(--colorFondoTransparente);
+    padding: var(--espaciadoGrande);
+    margin: var(--espaciadoPequeno) auto;
+    width: 95%;
+    max-width: var(--anchoMaximoAboutUs);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.aboutUs h2 {
+    font-size: 2em;
+    font-weight: 600;
+    color: var(--colorTexto);
+    letter-spacing: 0.5px;
+}
+
+.aboutUs h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: var(--espaciadoMedio) 0;
+    color: var(--colorTexto);
+    letter-spacing: 0.2px;
+    text-align: left;
+}
+
+.aboutUs p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--colorTexto);
+    margin: 0;
+    text-align: justify;
+}
+
+.socialMedias a {
+    text-decoration: none;
+    color: var(--colorSocialMedia);
+    font-size: 18px;
+    display: block;
+    text-align: start;
+    margin-bottom: var(--espaciadoMedio);
+}
