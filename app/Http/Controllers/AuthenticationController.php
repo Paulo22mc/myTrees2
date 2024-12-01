@@ -15,28 +15,63 @@ class AuthenticationController extends Controller
     }
 
     // Manejar el login
-    public function login(Request $request)
+    /**
+     * Summary of authenticate
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\RedirectResponse
+     */
+    public function authenticate(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:6',
+            'password' => 'required|min:3',
         ]);
 
-        // Intentar autenticar al usuario
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->intended('dashboard');
+        if (Auth::attempt($credentials)) {
+
+            $request->session()->regenerate();
+
+      
+            $user = Auth::user();
+
+            if ($user->role === 'administrator') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->role === 'operator') {
+                return redirect()->route('operator.dashboard'); 
+            } elseif ($user->role === 'friend') {
+                return redirect()->route('friend.dashboard'); 
+            }
+
+            Auth::logout();
+            return redirect()->route('login')->withErrors(['error' => 'Rol no válido.']);
         }
 
-        // Si la autenticación falla
-        return back()->withErrors(['email' => 'Credenciales incorrectas']);
+        
+        return back()->withErrors([
+            'email' => 'Las credenciales ingresadas no coinciden con nuestros registros.',
+        ]);
     }
 
-    // Manejar el logout (cerrar sesión)
-    public function logout()
+
+    // Manejar el logout 
+    /**
+     * Summary of logout
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::logout(); // Cierra la sesión
+    
+        // Invalida la sesión actual
+        $request->session()->invalidate();
+    
+        // Regenera el token CSRF
+        $request->session()->regenerateToken();
+    
+        // Redirige al usuario a la página principal
         return redirect('/');
     }
+    
 
     // Mostrar el formulario de registro
     public function showRegistrationForm()
@@ -64,10 +99,9 @@ class AuthenticationController extends Controller
             'number' => $request->number,
             'address' => $request->address,
             'country' => $request->country,
-            'role' => 'friend',  
+            'role' => 'friend',
         ]);
 
         return redirect()->route('login')->with('status', 'registered');
-
     }
 }
