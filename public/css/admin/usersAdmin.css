@@ -1,0 +1,86 @@
+.tabla-estilizada {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-estilizada thead {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.tabla-estilizada thead th {
+    padding: 12px 15px;
+}
+
+.tabla-estilizada tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.tabla-estilizada tbody tr:nth-of-type(even) {
+    background-color: #f2f2f2;
+}
+
+.tabla-estilizada tbody tr:hover {
+    background-color: #e1f5e6;
+    cursor: pointer;
+}
+
+.tabla-estilizada td {
+    padding: 10px 15px;
+    color: #333;
+}
+
+.tabla-estilizada td:last-child {
+    font-weight: bold;
+}
+
+.tabla-estilizada .no-users {
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+    padding: 20px;
+}
+
+.btn-edit, .btn-delete {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+}
+
+.btn-edit:hover {
+    background-color: #45a049;
+}
+
+.btn-delete {
+    background-color: #f44336; /* Rojo */
+    color: white;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
