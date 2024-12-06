@@ -80,7 +80,12 @@
 
 
                     <input type="submit" class="btn" value="Save User">
+
+
                 </form>
+
+                <a href="{{ route('AddUsers.show') }}" class="btn">See Users</a>
+
             </div>
         </div>
     </section>
