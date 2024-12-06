@@ -15,5 +15,11 @@ class TreeSpecies extends Model
         'comercialName', 
         'scientificName'
     ];
+
+
+    public function trees()
+    {
+        return $this->hasMany(treeForSale::class, 'idSpecie');
+    }
 }
 
