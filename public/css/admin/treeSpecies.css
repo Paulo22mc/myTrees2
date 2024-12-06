@@ -1,0 +1,160 @@
+:root {
+    --letra: telegraf;
+    --grisClaro: #e0e2e4;
+    --blanco: white;
+    --negro: black;
+    --gris: #dfdfdf;
+    --verdeOscuro: #498048;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 800px; 
+    margin: 50px auto; 
+    padding: 30px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: var(--letra);
+}
+
+h2 {
+    text-align: center;
+    color: var(--verdeOscuro);
+    margin: 30px 0; 
+}
+
+.input-contenedor {
+    margin-bottom: 20px; 
+}
+
+label {
+    display: block;
+    font-size: 18px; 
+    color: var(--negro);
+    margin-bottom: 8px; 
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px; 
+    font-size: 16px;
+    border: 2px solid var(--gris);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: var(--blanco);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--verdeOscuro);
+    outline: none;
+    background-color: var(--gris);
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px; 
+    font-size: 16px;
+    border: 2px solid var(--gris);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: var(--blanco);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 14px; 
+    font-size: 18px;
+    color: var(--blanco);
+    background-color: var(--verdeOscuro);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px; 
+}
+
+input[type="submit"]:hover {
+    background-color: #3c6c3a;
+    transform: scale(1.02);
+}
+
+.error {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.error .msg {
+    color: #ff3333;
+    font-size: 14px;
+}
+
+/* Estilo responsivo */
+table {
+    width: 100%; 
+    max-width: 800px; 
+    margin: 30px auto; 
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 20px; 
+    text-align: center;
+    border: 1px solid var(--gris);
+}
+
+th {
+    background-color: var(--verdeOscuro);
+    color: var(--blanco);
+}
+
+tr:nth-child(even) {
+    background-color: var(--grisClaro);
+}
+
+tr:hover {
+    background-color: var(--gris);
+}
+
+.action-button {
+    display: inline-block; 
+    padding: 10px 20px; 
+    margin: 5px; 
+    border: none;
+    border-radius: 8px; 
+    color: var(--blanco);
+    font-weight: bold;
+    text-align: center; 
+    text-decoration: none; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+}
+
+
+.action-button.edit {
+    background-color: #007bff; 
+}
+
+.action-button.edit:hover {
+    background-color: #0056b3; 
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4); 
+}
+
+
+.action-button.delete {
+    background-color: #dc3545; 
+}
+
+.action-button.delete:hover {
+    background-color: #c82333; 
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.4); 
+}
+
+
+select {
+    width: 100%;
+    padding: 10px;
+}
+
+
