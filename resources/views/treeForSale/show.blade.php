@@ -25,12 +25,12 @@
                     <td>{{ ucfirst($tree->status) }}</td>
                     <td><img src="{{ asset('storage/' . $tree->photo) }}" alt="Tree Photo" width="50"></td>
                     <td>
-                        <a href="{{ route('treeSale.edit', $tree->id) }}" class="btn btn-warning">Edit</a>
+                        {{-- <a href="{{ route('treeSale.edit', $tree->id) }}" class="btn btn-warning">Edit</a>
                         <form action="{{ route('treeSale.destroy', $tree->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        </form> --}}
                     </td>
                 </tr>
             @endforeach
