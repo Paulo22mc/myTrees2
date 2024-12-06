@@ -51,6 +51,11 @@ header {
     height: var(--alturaHeader); 
 }
 
+header > h1 > a {
+    text-decoration: none;
+    color: black;
+}
+
 header svg {
     color: var(--negro);
 }
