@@ -71,5 +71,22 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::get('/AddUsers/main', [AddUsersController::class, 'addUsers'])->name('AddUsers.main');
+
 Route::post('/AddUsers/register', [AddUsersController::class, 'register'])->name('AddUsers.register');
+
+// ver usuarios en tabla
+Route::get('/seeUsers', [AddUsersController::class, 'show'])->name('AddUsers.show');
+
+//ir al form de editar
+Route::get('/edit/{id}', [AddUsersController::class, 'edit']);
+
+//actualizar
+Route::put('/update/{id}', [AddUsersController::class, 'update'])->name('AddUsers.show');
+
+// cancel 
+Route::get('/users', [AddUsersController::class, 'show'])->name('AddUsers.show');
+
+
+//eliminar usuario
+Route::delete('/delete/{id}', [AddUsersController::class, 'destroy']);
 
