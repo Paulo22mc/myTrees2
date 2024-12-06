@@ -1,39 +1,48 @@
 @extends('treeForSale.main')
 
 @section('content')
-    <h2>Trees for Sale</h2>
+<div class="container">
+    <h1>Árboles en Venta</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Specie</th>
-                <th>Ubication</th>
-                <th>Size</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th>Photo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($trees as $tree)
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if($trees->isEmpty())
+        <p>No hay árboles en venta.</p>
+    @else
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td>{{ $tree->specie->name }}</td>
-                    <td>{{ $tree->ubication }}</td>
-                    <td>{{ $tree->size }} cm</td>
-                    <td>₡{{ number_format($tree->price, 2) }}</td>
-                    <td>{{ ucfirst($tree->status) }}</td>
-                    <td><img src="{{ asset('storage/' . $tree->photo) }}" alt="Tree Photo" width="50"></td>
-                    <td>
-                        {{-- <a href="{{ route('treeSale.edit', $tree->id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('treeSale.destroy', $tree->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form> --}}
-                    </td>
+                    <th>Specie</th>
+                    <th>Ubication</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Photo</th>
+                    <th>Publicado por</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach($trees as $tree)
+                    <tr>
+                        <td>{{ $tree->specie->name ?? 'Desconocida' }}</td>
+                        <td>{{ $tree->ubication }}</td>
+                        <td>{{ $tree->size }} cm</td>
+                        <td>${{ $tree->price }}</td>
+                        <td>
+                            @if($tree->photo)
+                                <img src="{{ asset('storage/' . $tree->photo) }}" alt="Foto" width="100">
+                            @else
+                                No photo
+                            @endif
+                        </td>
+                        <td>{{ $tree->friend->name ?? 'Anónimo' }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endif
+</div>
 @endsection
