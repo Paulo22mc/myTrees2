@@ -12,6 +12,7 @@
 
     <ul>
         <li><a href="">Friends</a></li>
+        <li><a href="{{route('AddUsers.main')}}">Add Users</a></li>
         <li><a href="{{route('treeSpecie.create')}}">Trees species</a></li>
         <li><a href="{{route('treeForSale.create')}}">Trees for sale</a></li>
 
