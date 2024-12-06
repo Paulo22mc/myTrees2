@@ -10,6 +10,11 @@ class AdminController extends Controller
 
     public function showMainView()
     {
-        return view('layoutAdmin.main');
+       
+        $friends = 10; 
+        $availableTrees = 20; 
+        $treeSold = 15; 
+
+        return view('layoutAdmin.main', compact('friends', 'availableTrees', 'treeSold'));
     }
 }
