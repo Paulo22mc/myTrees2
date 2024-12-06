@@ -22,6 +22,7 @@
                     <th>Price</th>
                     <th>Photo</th>
                     <th>Publicado por</th>
+                    <th>Acciones</th> <!-- Columna para botones de acción -->
                 </tr>
             </thead>
             <tbody>
@@ -39,10 +40,24 @@
                             @endif
                         </td>
                         <td>{{ $tree->friend->name ?? 'Anónimo' }}</td>
+                        <td>
+                            <!-- Enlace para editar -->
+                            <a href="{{ route('treeForSale.edit', $tree->id) }}" class="btn btn-warning btn-sm">Editar</a>
+
+                            <!-- Formulario para eliminar (con método DELETE) -->
+                            <form action="{{ route('treeForSale.destroy', $tree->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este árbol?')">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     @endif
+
+    <!-- Botón "Volver" -->
+    <a href="{{ route('treeForSale.create') }}" class="btn btn-primary">Back</a>
 </div>
 @endsection
