@@ -54,7 +54,5 @@ Route::delete('/treeSpecie/{id}', [TreeSpeciesController::class, 'destroy'])->na
 Route::middleware(['auth'])->group(function () {
     Route::get('treeForSale/create', [TreeController::class, 'create'])->name('treeForSale.create');
     Route::post('treeForSale/save', [TreeController::class, 'save'])->name('treeForSale.save');
-
+    Route::get('/treesForSale-sale', [TreeController::class, 'index'])->name('treeForSale.index');
 });
-
-
