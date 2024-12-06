@@ -6,6 +6,7 @@ use App\Models\treeForSale;
 use App\Models\TreeSpecies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class TreeController extends Controller
 {
@@ -21,44 +22,51 @@ class TreeController extends Controller
     // Guardar un nuevo árbol
     public function save(Request $request)
     {
-        try {
-            $request->validate([
-                'treeSpecie'    => 'required|exists:treeSpecies,id', 
-                'ubication'     => 'required|string|max:255',
-                'size'          => 'required|integer|min:10',
-                'price'         => 'required|numeric|min:500',
-                'photo'         => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048'
-            ]);
-
-            // Subir foto si se proporciona
-            $photoPath = $request->hasFile('photo')
-                ? $request->file('photo')->store('photos', 'public')
-                : null;
-
-            // Crear el árbol en venta en la tabla 'tree'
-            treeForSale::create([
-                'idSpecie'  => $request->treeSpecie,
-                'idFriend'  => Auth::id(),
-                'ubication' => $request->ubication,
-                'status'    => 'available',
-                'size'      => $request->size,
-                'price'     => $request->price,
-                'photo'     => $photoPath
-            ]);
-
-            return redirect()->route('treeForSale.show')->with('success', 'Tree saved successfully');
-        } catch (\Exception $e) {
-            return back()->withErrors(['error' => $e->getMessage()]);
+        // Validación de los datos del formulario
+        $request->validate([
+            'treeSpecie' => 'required|exists:treeSpecie,id',
+            'ubication' => 'required|string|max:255',
+            'size' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        // Manejar la imagen
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('photos', 'public');
+        } else {
+            return back()->withErrors(['photo' => 'Error al subir la foto.']);
         }
+    
+        // Crear el árbol en la base de datos
+        $tree = new treeForSale();
+        $tree->idSpecie = $request->treeSpecie;
+        $tree->idFriend = null; // Omitido, quedará nulo por defecto
+        $tree->ubication = $request->ubication;
+        $tree->size = $request->size;
+        $tree->price = $request->price;
+        $tree->photo = $photoPath;
+        $tree->status = 'available';
+        $tree->save();
+    
+        // Redirigir con mensaje de éxito
+        return redirect()->route('treeForSale.index')->with('success', 'Tree saved successfully!');
     }
+    
+
+
+
 
     // Mostrar todos los árboles en venta
     public function index()
     {
-        // Obtener árboles con relaciones de especie y amigo (usuario)
+        // Obtener árboles en venta con relaciones
         $trees = treeForSale::with('specie', 'friend')->get();
+
+        // Pasar datos a la vista
         return view('treeForSale.show', compact('trees'));
     }
+
 
     /*
 
