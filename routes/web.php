@@ -41,8 +41,14 @@ Route::post('/treeSpecie', [TreeSpeciesController::class, 'save'])->name('treeSp
 // Mostrar todas las especies registradas
 Route::get('/treeSpecie/show', [TreeSpeciesController::class, 'show'])->name('treeSpecie.show');
 
-// Ruta para procesar la actualización de una especie
-Route::put('/treeSpecie/updated/{id}', [TreeSpeciesController::class, 'updated'])->name('treeSpecie.updated');
+
+
+// Ruta para mostrar el formulario de edición
+Route::get('/treeSpecie/edit/{id}', [TreeSpeciesController::class, 'edit'])->name('treeSpecie.edit');
+
+// Ruta para procesar la actualización
+Route::put('/treeSpecie/update/{id}', [TreeSpeciesController::class, 'update'])->name('treeSpecie.update');
+
 
 // Eliminar todas las especies registradas
 Route::delete('/treeSpecie/{id}', [TreeSpeciesController::class, 'destroy'])->name('treeSpecie.destroy');
