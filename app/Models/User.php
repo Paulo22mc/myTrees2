@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->role === 'user';
     }
+
+    public function trees()
+    {
+        return $this->hasMany(treeForSale::class, 'idFriend');
+    }
 }
