@@ -1,6 +1,6 @@
 <header>
     <h1 class="namePage">
-        <a href="{{ route('friend.dashboard') }}">
+        <a href="{{ route('admin.dashboard') }}">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                 class="bi bi-house-fill" viewBox="0 0 16 16">
                 <path
@@ -15,7 +15,6 @@
         <li><a href="{{route('treeSpecie.create')}}">Trees species</a></li>
         <li><a href="">Trees for sale</a></li>
 
-        <!-- Formulario de logout como un enlace -->
         <li>
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                 @csrf
