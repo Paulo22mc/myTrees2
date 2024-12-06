@@ -36,5 +36,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Save Tree</button>
+        <a href="{{ route('treeForSale.show') }}" class="btn btn-secondary mt-3">See Trees</a>
+
     </form>
 @endsection
