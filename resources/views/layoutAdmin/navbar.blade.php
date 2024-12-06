@@ -13,7 +13,7 @@
     <ul>
         <li><a href="">Friends</a></li>
         <li><a href="{{route('treeSpecie.create')}}">Trees species</a></li>
-        <li><a href="">Trees for sale</a></li>
+        <li><a href="{{route('treeForSale.create')}}">Trees for sale</a></li>
 
         <li>
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
