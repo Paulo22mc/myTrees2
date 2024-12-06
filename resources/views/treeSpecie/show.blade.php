@@ -24,7 +24,7 @@
                     <td>{{ $tree->comercialName }}</td>
                     <td>{{ $tree->scientificName }}</td>
                     <td>
-                        <a href="{{ route('treeSpecie.updated', ['id' => $tree->id]) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('treeSpecie.edit', ['id' => $tree->id]) }}" class="btn btn-warning">Edit</a>
                         <form action="{{ route('treeSpecie.destroy', $tree->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
