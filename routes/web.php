@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FriendController;
 use App\Http\Controllers\TreeSpeciesController;
+use App\Http\Controllers\TreeController;
 
 
 // Ruta para mostrar el formulario de login
@@ -49,3 +50,11 @@ Route::put('/treeSpecie/update/{id}', [TreeSpeciesController::class, 'update'])-
 
 // Eliminar todas las especies registradas
 Route::delete('/treeSpecie/{id}', [TreeSpeciesController::class, 'destroy'])->name('treeSpecie.destroy');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('treeForSale/create', [TreeController::class, 'create'])->name('treeForSale.create');
+    Route::post('treeForSale/save', [TreeController::class, 'save'])->name('treeForSale.save');
+
+});
+
+
