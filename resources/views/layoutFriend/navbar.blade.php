@@ -11,9 +11,11 @@
     </h1>
 
     <ul>
-        <li><a href="{{route('availableTrees.main')}}">Buy Tree</a></li>
-        <li><a href="">See My Trees</a></li>
-        <!-- Formulario de logout como un enlace -->
+        @if (Auth::user() && Auth::user()->role !== 'administrator')
+            <li><a href="{{ route('availableTrees.main') }}">Buy Tree</a></li>
+            <li><a href="{{ route('seeMyTrees.main') }}">See My Trees</a></li>
+        @endif
+
         <li>
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                 @csrf
