@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+use App\Models\treeForSale;
+
 class AdminController extends Controller
 {
     //
 
     public function showMainView()
     {
-       
-        $friends = 10; 
-        $availableTrees = 20; 
-        $treeSold = 15; 
 
-        return view('layoutAdmin.main', compact('friends', 'availableTrees', 'treeSold'));
+        $totalFriends = User::where('role', 'friend')->count();
+        $totalAvailableTrees = treeForSale::where('status', 'available')->count();
+        $totalSoldTrees = treeForSale::where('status', 'sold')->count();
+
+
+        return view('layoutAdmin.main', compact('totalFriends', 'totalAvailableTrees', 'totalSoldTrees'));
     }
 }
