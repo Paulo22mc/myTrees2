@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FriendController;
+use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\TreeSpeciesController;
 use App\Http\Controllers\TreeController;
+use App\Http\Controllers\AvailableTreesController;
+use App\Http\Controllers\BuyFormController;
 
 
 
@@ -29,11 +32,14 @@ Route::get('/register', [AuthenticationController::class, 'showRegistrationForm'
 // Ruta para procesar el registro
 Route::post('/register', [AuthenticationController::class, 'register']);
 
-
+//Mostrar dashboard de admin
 Route::get('/admin/dashboard', [AdminController::class, 'showMainView'])->name('admin.dashboard');
-//Route::get('/operator/dashboard', [OperatorController::class, 'index'])->name('operator.dashboard');
-Route::get('/friend/dashboard', [FriendController::class, 'showMainView'])->name('friend.dashboard');
 
+//Mostrar dashboard de operator
+Route::get('/operator/dashboard', [OperatorController::class, 'showMainView'])->name('operator.dashboard');
+
+//Mostrar dashboard de friend
+Route::get('/friend/dashboard', [FriendController::class, 'showMainView'])->name('friend.dashboard');
 
 // Mostrar el formulario para registrar nuevas especies
 Route::get('/treeSpecie/create', [TreeSpeciesController::class, 'create'])->name('treeSpecie.create');
@@ -86,7 +92,12 @@ Route::put('/update/{id}', [AddUsersController::class, 'update'])->name('AddUser
 // cancel 
 Route::get('/users', [AddUsersController::class, 'show'])->name('AddUsers.show');
 
-
 //eliminar usuario
 Route::delete('/delete/{id}', [AddUsersController::class, 'destroy']);
 
+
+Route::get('/availableTrees', [AvailableTreesController::class, 'index'])->name('availableTrees.main');
+
+
+Route::get('/buyTree/{id}', [BuyFormController::class, 'showBuyForm'])->name('BuyForm.main');
+Route::post('/buyTree', [BuyFormController::class, 'confirmPurchase'])->name('BuyForm.confirm');
