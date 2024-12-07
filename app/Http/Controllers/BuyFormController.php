@@ -28,29 +28,31 @@ class BuyFormController extends Controller
 
 
 
-    // Confirmar la compra
     public function confirmPurchase(Request $request)
     {
-        $request->validate([
-            'treeId' => 'required|exists:treeForSale,id',
-            'buyerId' => 'required|exists:users,id',
-        ]);
-
-        $tree = treeForSale::find($request->treeId);
-
-        if ($tree->status === 'sold') {
-            return redirect()->route('BuyForm.main', $request->treeId)->with('error', 'Este árbol ya ha sido vendido');
+        $buyerId = Auth::id();
+    
+        if (!$buyerId) {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para realizar esta acción.');
         }
-        $tree->idFriend = $request->buyerId;
-        $tree->status = 'sold';
-        $tree->save();
-
-        BuyForm::create([
-            'tree_id' => $tree->id,
-            'user_id' => $request->buyerId,
-            'status' => 'confirmed',
+    
+        $request->validate([
+            'treeId' => 'required|exists:tree,id',
         ]);
-
-        return redirect()->route('BuyForm.main', $request->treeId)->with('success', 'Compra confirmada con éxito');
+    
+        $tree = treeForSale::find($request->treeId);
+    
+        if (!$tree || $tree->status === 'sold') {
+            return redirect()->route('BuyForm.main', $request->treeId)->with('error', 'Este árbol ya ha sido vendido.');
+        }
+        
+        $tree->update([
+            'idFriend' => $buyerId,  
+            'status' => 'sold',      
+        ]);
+    
+        return redirect()->route('availableTrees.main', $request->treeId)->with('success', 'Árbol comprado con éxito.');
     }
+    
+    
 }
