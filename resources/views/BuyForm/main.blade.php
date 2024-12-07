@@ -1,42 +1,33 @@
 @extends('BuyForm.app')
 
 @section('content')
-    <div class="container">
-        <h2>Confirm Purchase</h2>
+    <div class="purchase-container">
+        <h2 class="purchase-title">Confirm Purchase</h2>
 
-        <form action="{{ route('BuyForm.confirm') }}" method="POST">
+        <form action="{{ route('BuyForm.confirm') }}" method="POST" class="purchase-form">
             @csrf
             <input type="hidden" name="treeId" value="{{ $tree->id }}">
             
-            <!-- Puedes permitir que el comprador seleccione su ID o agregarlo como un campo oculto -->
             <input type="hidden" name="buyerId" value="{{ old('buyerId') }}">
 
-            <div class="tree-info">
-                <label>Tree species:</label>
-                <input type="text" value="{{ $tree->specie_name }}" readonly>
-
+            <div class="tree-details">
+                <label>Tree specie:</label>
+                <input type="text" value="{{ $tree->specie->comercialName }}" readonly>
+            
                 <label>Ubication:</label>
                 <input type="text" value="{{ $tree->ubication }}" readonly>
-
+            
                 <label>Size (cm):</label>
                 <input type="text" value="{{ $tree->size }}" readonly>
-
+            
                 <label>Price:</label>
-                <input type="text" value="$ {{ number_format($tree->price, 2) }}" readonly>
-
-                <div>
-                    <img src="https://life-urns.com/wp-content/uploads/2022/05/mata.png" alt="Imagen de {{ $tree->specie_name }}" width="200">
-                </div>
+                <input type="text" value="₡ {{ number_format($tree->price, 2) }}" readonly>
             </div>
-
-            <div class="buyer-info">
-                <label>Name:</label>
-                <input type="text" name="buyerName" value="{{ old('buyerName') }}" placeholder="Enter your name" required>
-            </div>
-
+            
             <div>
-                <input type="submit" class="btn" value="Confirm">
-                <a href="{{ route('BuyForm.main', $tree->id) }}">Cancel</a>
+                <input type="submit" class="btn-confirm" value="Confirm">
+                <a href="{{ route('availableTrees.main') }}" class="purchase-link">Cancel</a>
+
             </div>
         </form>
     </div>
