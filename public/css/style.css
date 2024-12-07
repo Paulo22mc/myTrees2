@@ -69,24 +69,25 @@ header {
     background-color: var(--blanco);
     transition: 0.6s;
     height: var(--alturaHeader); 
+    color: var(--blanco); 
 }
 
 header > h1 > a {
     text-decoration: none;
-    color: var(--negro);
+    color: var(--blanco); 
 }
 
 header svg {
-    color: var(--negro);
+    color: var(--blanco); 
 }
 
 header svg:hover {
-    color: var(--blanco);
+    color: var(--blanco); 
 }
 
 header .namePage {
     font-weight: 700;
-    color: var(--negro);
+    color: var(--blanco); 
     text-decoration: none;
     font-size: 2em;
     text-transform: uppercase;
@@ -107,7 +108,7 @@ header ul li {
 header ul li a {
     margin: 0 15px;
     text-decoration: none;
-    color: var(--negro);
+    color: var(--blanco); 
     letter-spacing: 2px;
     font-weight: 500;
     transition: 0.6s;
