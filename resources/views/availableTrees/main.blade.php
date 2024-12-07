@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Trees</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/friend/buyTree.css') }}">
 </head>
 
 <body>
@@ -35,7 +36,7 @@
                         <td>{{ $tree->specie->comercialName }}</td>
                         <td>{{ $tree->ubication }}</td>
                         <td>{{ $tree->size }}</td>
-                        <td>${{ $tree->price }}</td>
+                        <td>₡{{ $tree->price }}</td>
                         <td>
                             <a href="{{ route('BuyForm.main', ['id' => $tree->id]) }}" class="btn btn-primary">
                                 Buy Now
