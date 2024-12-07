@@ -10,8 +10,7 @@ use App\Http\Controllers\TreeSpeciesController;
 use App\Http\Controllers\TreeController;
 use App\Http\Controllers\AvailableTreesController;
 use App\Http\Controllers\BuyFormController;
-
-
+use App\Http\Controllers\SeeMyTreesController;
 
 // Ruta para mostrar el formulario de login
 Route::get('/', [AuthenticationController::class, 'showLoginForm'])->name('login');
@@ -101,3 +100,12 @@ Route::get('/availableTrees', [AvailableTreesController::class, 'index'])->name(
 
 Route::get('/buyTree/{id}', [BuyFormController::class, 'showBuyForm'])->name('BuyForm.main');
 Route::post('/buyTree', [BuyFormController::class, 'confirmPurchase'])->name('BuyForm.confirm');
+
+//see my trees
+Route::middleware(['auth'])->group(function () {
+    Route::get('/see-my-trees', [SeeMyTreesController::class, 'seeMyTrees'])->name('seeMyTrees.main');
+});
+
+Route::get('/access-denied', function () {
+    return view('accessDenied');
+})->name('accessDenied');
