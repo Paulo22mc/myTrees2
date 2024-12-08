@@ -1,0 +1,114 @@
+:root {
+    --fondoImagen: url('https://kamaleon.viajes/wp-content/uploads/2017/10/OD_Monteverde_01.jpg');
+    --colorFondo: rgba(255, 255, 255, 0.5);
+    --colorTexto: #333;
+    --colorTextoSecundario: #555;
+    --colorInfoFondo: rgba(0, 0, 0, 0.7);
+    --colorSombra: rgba(0, 0, 0, 0.2);
+    --anchoCard: 300px;
+    --altoCard: 400px;
+    --margenCard: 15px;
+    --blanco: white;
+}
+
+body {
+    background-image: var(--fondoImagen);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: var(--colorTexto);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--colorFondo);
+    z-index: 1;
+}
+
+* {
+    position: relative;
+    z-index: 2;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    margin: 20px 0;
+    color: var(--colorTexto);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+p {
+    text-align: center;
+    font-size: medium;
+    color: var(--Blanco);
+    margin-bottom: 20px;
+}
+
+.treeCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.treeCard {
+    position: relative;
+    width: var(--anchoCard);
+    height: var(--altoCard);
+    margin: var(--margenCard);
+    box-shadow: 0 4px 8px var(--colorSombra);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--grisClaro);
+}
+
+.treeCard .imageBox {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.treeCard .imageBox img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.treeCard .info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--colorInfoFondo);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.treeCard:hover .info {
+    opacity: 1;
+}
+
+.info h3 {
+    font-size: 1.5rem;
+}
+
+.info label {
+    margin-top: 20px;
+    font-weight: bold;
+}
