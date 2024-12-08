@@ -102,10 +102,11 @@ Route::get('/buyTree/{id}', [BuyFormController::class, 'showBuyForm'])->name('Bu
 Route::post('/buyTree', [BuyFormController::class, 'confirmPurchase'])->name('BuyForm.confirm');
 
 //see my trees
-Route::middleware(['auth'])->group(function () {
-    Route::get('/see-my-trees', [SeeMyTreesController::class, 'seeMyTrees'])->name('seeMyTrees.main');
-});
 
+    Route::get('/SeeMyTrees', [SeeMyTreesController::class, 'index'])->name('seeMyTrees.main');
+
+
+/*
 Route::get('/access-denied', function () {
     return view('accessDenied');
-})->name('accessDenied');
+})->name('accessDenied');*/
