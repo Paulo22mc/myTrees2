@@ -109,31 +109,30 @@ Route::middleware(['auth', RoleMiddleware::class . ':administrator'])->group(fun
 
 
 //RUTAS USUARIO OPERADOR
-Route::middleware(['auth', RoleMiddleware::class . ':administrator'])->group(function () {
+Route::middleware(['auth', RoleMiddleware::class . ':operator'])->group(function () {
 
     //Mostrar dashboard de operator
     Route::get('/operator/dashboard', [OperatorController::class, 'showMainView'])->name('operator.dashboard');
 });
 
 
-//RUTAS TODOS LOS USUARIOS
-Route::middleware(['auth', RoleMiddleware::class . ':administrator,friend,operator'])->group(function () {
 
-    // Ruta para mostrar el formulario de login
-    Route::get('/', [AuthenticationController::class, 'showLoginForm'])->name('login');
 
-    // Ruta para procesar el login
-    Route::post('/', [AuthenticationController::class, 'authenticate']);
+// Ruta para mostrar el formulario de login
+Route::get('/', [AuthenticationController::class, 'showLoginForm'])->name('login');
 
-    // Ruta para procesar el logout (cerrar sesión)
-    Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+// Ruta para procesar el login
+Route::post('/', [AuthenticationController::class, 'authenticate']);
 
-    // Ruta para mostrar el formulario de registro
-    Route::get('/register', [AuthenticationController::class, 'showRegistrationForm'])->name('register');
+// Ruta para procesar el logout (cerrar sesión)
+Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
-    // Ruta para procesar el registro
-    Route::post('/register', [AuthenticationController::class, 'register']);
-});
+// Ruta para mostrar el formulario de registro
+Route::get('/register', [AuthenticationController::class, 'showRegistrationForm'])->name('register');
+
+// Ruta para procesar el registro
+Route::post('/register', [AuthenticationController::class, 'register']);
+
 
 
 
