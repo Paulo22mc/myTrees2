@@ -21,7 +21,7 @@
 
             <div class="form-group">
                 <label for="size">Size (cm)</label>
-                <input type="number" id="size" min=15 name="size" value="{{ $tree->size }}" required>
+                <input type="number" id="size" min=1 name="size" value="{{ $tree->size }}" required>
             </div>
 
             <div class="form-group">
@@ -45,13 +45,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="photo">Photo</label>
-                <input type="file" id="photo" name="photo">
-                @if ($tree->photo)
-                    <img src="{{ asset('storage/' . $tree->photo) }}" alt="Tree Photo" class="tree-photo-preview">
-                @endif
-            </div>
+
 
             <div class="form-buttons">
                 <button type="submit" class="action-button">Save Changes</button>
