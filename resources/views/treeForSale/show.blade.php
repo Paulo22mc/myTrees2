@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Árboles en Venta</h1>
+    <h2>Árboles en Venta</h2>
 
     @if(session('success'))
         <div class="alert alert-success">

@@ -19,7 +19,10 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
+
+                <a href="{{ route('treeSpecie.show') }}" class="btnSee">See Species</a>
             </form>
+
         </div>
     </div>
 @endsection

@@ -4,17 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users List</title>
-    <link rel="stylesheet" href=" {{ asset('css/style.css') }}">
-    <link rel="stylesheet" href=" {{ asset('css/admin/usersAdmin.css') }}">
+    <title>My Trees 2</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/usersAdmin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="icon" href="{{ asset('images/icon.png') }}" type="image/png">
 </head>
 
 <body>
     @include('layoutAdmin.navbar')
 
-    <section>
-        <div >
-            <h1>Users List</h1>
+    <section class="usuarios-lista-section">
+        <div class="tabla-container">
+            <h1 class="titulo-lista">Users List</h1>
 
             <table class="tabla-estilizada">
                 <thead>
@@ -32,7 +34,7 @@
                 </thead>
                 <tbody>
                     @forelse ($users as $user)
-                        <tr>
+                        <tr class="usuario-row">
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->lastname }}</td>
@@ -41,9 +43,9 @@
                             <td>{{ $user->address }}</td>
                             <td>{{ $user->country }}</td>
                             <td>{{ ucfirst($user->role) }}</td>
-                            <td>
+                            <td class="acciones">
                                 <a href="/edit/{{ $user->id }}" class="btn-edit">Edit</a>
-                                <form action="/delete/{{ $user->id }}" method="POST" style="display:inline;">
+                                <form action="/delete/{{ $user->id }}" method="POST" class="form-delete">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn-delete">Delete</button>
@@ -56,14 +58,14 @@
                         </tr>
                     @endforelse
                 </tbody>
+
             </table>
-            
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="/AddUsers/main" class="btn" style="background-color: var(--colorBoton); text-decoration: none; color: var(--negro); padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            <div class="container-btnAdd">
+                <a href="/AddUsers/main" class="btn btn-add-user">
                     Add User
                 </a>
             </div>
-            
+
         </div>
     </section>
 </body>

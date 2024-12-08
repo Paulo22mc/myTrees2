@@ -6,13 +6,14 @@
     <title>My Trees 2</title>
     <link rel="stylesheet" href=" {{ asset('css/friend/dashboard.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="icon" href="{{ asset('images/icon.png') }}" type="image/png">
 </head>
 <body>
     @include('layoutFriend.navbar')
 
     <main>
-        @yield('content') <!-- Aquí es donde se insertará el contenido de cada vista que lo use -->
+        @yield('content') 
     </main>
 
 
