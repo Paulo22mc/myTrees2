@@ -9,7 +9,7 @@
     </h1>
 
     <ul class="navbar__menu">
-        <li><a href="" class="navbar__link">Friends</a></li>
+        <li><a href="{{route('friends.app')}}" class="navbar__link">Friends</a></li>
         <li><a href="{{route('AddUsers.main')}}" class="navbar__link">Add Users</a></li>
         <li><a href="{{route('treeSpecie.create')}}" class="navbar__link">Trees species</a></li>
         <li><a href="{{route('treeForSale.create')}}" class="navbar__link">Trees for sale</a></li>
