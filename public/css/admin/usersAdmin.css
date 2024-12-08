@@ -1,26 +1,57 @@
+:root {
+    --colorFondo: #f8f9fa;
+    --colorPrimario: #4CAF50;
+    --colorSecundario: #FFFFFF;
+    --colorTexto: #333;
+    --colorBoton: #388E3C;
+    --colorBorde: #ddd;
+    --negro: #000;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--colorFondo);
+    color: var(--colorTexto);
+}
+
+.usuarios-lista-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.titulo-lista {
+    font-size: 2rem;
+    color: var(--colorPrimario);
+    margin-bottom: 20px;
+}
+
 .tabla-estilizada {
-    width: 100%;
+    width: 80%;  /* Reducimos el ancho de la tabla */
+    max-width: 900px;  /* Añadimos un ancho máximo */
+    margin: 20px auto;  /* Centramos la tabla */
     border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 18px;
+    font-size: 16px;  /* Reducimos el tamaño de la fuente */
     text-align: left;
     background-color: #f9f9f9;
-    border-radius: 10px;
+    border-radius: 8px;  /* Bordes más redondeados */
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tabla-estilizada thead {
-    background-color: #4CAF50;
+    background-color: var(--colorPrimario);
     color: white;
 }
 
 .tabla-estilizada thead th {
-    padding: 12px 15px;
+    padding: 10px 12px;  /* Reducimos el padding */
+    font-weight: bold;
 }
 
 .tabla-estilizada tbody tr {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--colorBorde);
 }
 
 .tabla-estilizada tbody tr:nth-of-type(even) {
@@ -33,7 +64,7 @@
 }
 
 .tabla-estilizada td {
-    padding: 10px 15px;
+    padding: 8px 12px;  /* Reducimos el padding */
     color: #333;
 }
 
@@ -48,9 +79,15 @@
     padding: 20px;
 }
 
+.acciones {
+    display: flex;
+    gap: 8px;  /* Reducimos el espacio entre los botones */
+    justify-content: center;
+}
+
 .btn-edit, .btn-delete {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 5px 8px;  /* Reducimos el tamaño del botón */
     border-radius: 5px;
     text-decoration: none;
     font-size: 14px;
@@ -60,7 +97,7 @@
 }
 
 .btn-edit {
-    background-color: #4CAF50; /* Verde */
+    background-color: var(--colorPrimario);
     color: white;
     border: none;
 }
@@ -70,7 +107,7 @@
 }
 
 .btn-delete {
-    background-color: #f44336; /* Rojo */
+    background-color: #f44336;
     color: white;
     border: none;
 }
@@ -83,4 +120,38 @@ form {
     margin: 0;
     padding: 0;
     display: inline;
+}
+
+
+.container-btnAdd {
+    padding: 10px 20px;  
+    background-color: var(--colorPrimario);  
+    color: var(--colorSecundario); 
+    text-decoration: none;  
+    font-weight: bold;  
+    border-radius: 5px; 
+    display: inline-block;  
+    cursor: pointer;  
+    text-align: center;  
+    transition: background-color 0.3s ease, transform 0.2s ease;  
+}
+
+.btn-add-user:hover {
+    background-color: #45a049;  
+    transform: scale(1.05);  
+}
+
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .tabla-estilizada th, .tabla-estilizada td {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    .btn-add-user {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
 }

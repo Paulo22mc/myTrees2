@@ -21,22 +21,6 @@ body {
     color: var(--colorTexto);
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--colorFondo);
-    z-index: 1;
-}
-
-* {
-    position: relative;
-    z-index: 2;
-}
-
 h2 {
     text-align: center;
     font-size: 2em;
@@ -111,4 +95,36 @@ p {
 .info label {
     margin-top: 20px;
     font-weight: bold;
+}
+
+/* Tabla */
+table {
+    width: 80%; /* Reducido el ancho de la tabla */
+    max-width: 900px; /* Añadí un límite máximo al ancho */
+    margin: 20px auto; /* Centrado de la tabla */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--colorSombra); /* Sombra alrededor */
+    border-collapse: collapse;
+    color: var(--colorTexto);
+}
+
+table th, table td {
+    padding: 8px; /* Reducido el espacio dentro de las celdas */
+    text-align: left;
+    border-bottom: 1px solid var(--colorSombra);
+}
+
+table th {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--blanco);
+}
+
+table img {
+    width: 80px; /* Reducido el tamaño de la imagen */
+    height: auto;
+}
+
+table tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }

@@ -1,10 +1,19 @@
 :root {
-    --letra: telegraf;
+    --letra: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --grisClaro: #e0e2e4;
     --blanco: white;
     --negro: black;
     --gris: #dfdfdf;
     --verdeOscuro: #498048;
+    --colorPrimario: #4CAF50;
+}
+
+body {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    font-family: var(--letra);
+    overflow-y: scroll;
 }
 
 .form-container {
@@ -15,69 +24,56 @@
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     font-family: var(--letra);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 h2 {
     text-align: center;
-    color: var(--verdeOscuro);
-    margin: 30px 0; 
+    color: var(--colorPrimario) !important;
+    margin: 30px 0;
 }
 
 .input-contenedor {
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    font-size: 18px; 
-    color: var(--negro);
-    margin-bottom: 8px; 
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 12px; 
-    font-size: 16px;
-    border: 2px solid var(--gris);
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: var(--blanco);
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-input[type="text"]:focus {
-    border-color: var(--verdeOscuro);
-    outline: none;
-    background-color: var(--gris);
-}
-
-input[type="number"] {
-    width: 100%;
-    padding: 12px; 
-    font-size: 16px;
-    border: 2px solid var(--gris);
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: var(--blanco);
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-input[type="submit"] {
-    width: 100%;
-    padding: 14px; 
     font-size: 18px;
     color: var(--blanco);
-    background-color: var(--verdeOscuro);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 15px; 
+    margin-bottom: 8px;
 }
 
-input[type="submit"]:hover {
-    background-color: #3c6c3a;
-    transform: scale(1.02);
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid var(--blanco);
+    background-color: transparent;
+    color: var(--blanco);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: var(--colorPrimario);
+    outline: none;
+    background-color: transparent;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid var(--gris);
+    border-radius: 5px;
+    color: var(--negro);
+    font-size: 16px;
+}
+
+input[type="file"]:focus {
+    outline: none;
+    border-color: var(--colorPrimario);
 }
 
 .error {
@@ -90,71 +86,142 @@ input[type="submit"]:hover {
     font-size: 14px;
 }
 
-/* Estilo responsivo */
-table {
-    width: 100%; 
-    max-width: 800px; 
-    margin: 30px auto; 
-    border-collapse: collapse;
+.container {
+    padding: 30px;
 }
 
-th, td {
-    padding: 20px; 
+h2 {
     text-align: center;
-    border: 1px solid var(--gris);
+    color: var(--colorPrimario);
+    margin: 30px 0;
 }
 
-th {
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    max-height: 400px;
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    table-layout: fixed;
+}
+
+.table thead {
     background-color: var(--verdeOscuro);
     color: var(--blanco);
 }
 
-tr:nth-child(even) {
+.table th, .table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid var(--gris);
+}
+
+.table tr:nth-child(even) {
     background-color: var(--grisClaro);
 }
 
-tr:hover {
-    background-color: var(--gris);
+.table tr:hover {
+    background-color: #f4f4f4;
+}
+
+.table td a {
+    text-decoration: none;
+    color: var(--blanco);
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.table td a.btn-warning {
+    background-color: #ff9800;
+}
+
+.table td a.btn-warning:hover {
+    background-color: #e68900;
+}
+
+.table td form button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: var(--blanco);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.table td form button.btn-danger {
+    background-color: #dc3545;
+}
+
+.table td form button.btn-danger:hover {
+    background-color: #c82333;
 }
 
 .action-button {
-    display: inline-block; 
-    padding: 10px 20px; 
-    margin: 5px; 
-    border: none;
-    border-radius: 8px; 
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
     color: var(--blanco);
+    background-color: var(--colorPrimario);
+    border-radius: 30px;
+    text-decoration: none;
     font-weight: bold;
-    text-align: center; 
-    text-decoration: none; 
-    cursor: pointer; 
-    transition: all 0.3s ease; 
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 30px;
 }
 
-
-.action-button.edit {
-    background-color: #007bff; 
+.action-button:hover {
+    background-color: #3e8e41;
+    transform: scale(1.05);
 }
-
-.action-button.edit:hover {
-    background-color: #0056b3; 
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4); 
-}
-
-
-.action-button.delete {
-    background-color: #dc3545; 
-}
-
-.action-button.delete:hover {
-    background-color: #c82333; 
-    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.4); 
-}
-
 
 select {
     width: 100%;
     padding: 10px;
+    background-color: transparent;
+    color: var(--colorPrimario);
 }
 
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    color: var(--blanco);
+    background-color: var(--colorPrimario);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
 
+.btn-primary:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
+
+.btnSee {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--blanco);
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btnSee:hover {
+    background-color: #3e8e41;
+    transform: scale(1.05);
+}
