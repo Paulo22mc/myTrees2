@@ -3,12 +3,11 @@ body {
     background-color: #f4f8f3;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Alinea hacia la parte superior */
     align-items: center;
     overflow-x: hidden;
+    overflow-y: auto; /* Habilitar el scroll vertical */
 }
 
 h2 {
@@ -31,8 +30,9 @@ form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 10px; /* Reducir el margen superior */
+    margin-top: 20px; /* Ajustar margen superior */
 }
+
 
 .form-group {
     display: flex;
