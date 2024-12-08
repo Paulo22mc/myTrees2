@@ -44,21 +44,14 @@ class FriendTreeController extends Controller
         // Encuentra el árbol por ID
         $tree = treeForSale::findOrFail($id);
 
-        // Actualiza los campos según los datos del formulario
-        $tree->name = $request->input('name');
         $tree->idSpecie = $request->input('idSpecie');
         $tree->size = $request->input('size');
         $tree->ubication = $request->input('ubication');
-
-        // Si se cargó una nueva foto, actualízala
-        if ($request->hasFile('photo')) {
-            $tree->photo = $request->file('photo')->store('trees', 'public');
-        }
+        $tree->status = $request->input('status');
 
         // Guarda los cambios
         $tree->save();
 
-        // Redirige a los detalles del amigo con un mensaje de éxito
         return redirect()->route('friendDetails', ['id' => $tree->idFriend])
             ->with('success', 'Tree updated successfully!');
     }
