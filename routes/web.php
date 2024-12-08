@@ -11,6 +11,7 @@ use App\Http\Controllers\TreeController;
 use App\Http\Controllers\AvailableTreesController;
 use App\Http\Controllers\BuyFormController;
 use App\Http\Controllers\SeeMyTreesController;
+use App\Http\Controllers\FriendTreeController;
 
 // Ruta para mostrar el formulario de login
 Route::get('/', [AuthenticationController::class, 'showLoginForm'])->name('login');
@@ -63,7 +64,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('treeForSale/save', [TreeController::class, 'save'])->name('treeForSale.save');
     Route::get('/treesForSale-sale', [TreeController::class, 'index'])->name('treeForSale.index');
     Route::get('/treesForSale/show', [TreeController::class, 'index'])->name('treeForSale.show');
-    
+
     // Editar los árboles registrados
     Route::get('/trees/{id}/edit', [TreeController::class, 'edit'])->name('treeForSale.edit');
 
@@ -103,10 +104,23 @@ Route::post('/buyTree', [BuyFormController::class, 'confirmPurchase'])->name('Bu
 
 //see my trees
 
-    Route::get('/SeeMyTrees', [SeeMyTreesController::class, 'index'])->name('seeMyTrees.main');
+Route::get('/SeeMyTrees', [SeeMyTreesController::class, 'index'])->name('seeMyTrees.main');
 
 
-/*
-Route::get('/access-denied', function () {
-    return view('accessDenied');
-})->name('accessDenied');*/
+// detalles de amigo
+Route::middleware(['auth'])->group(function () {
+    // Ruta para mostrar la lista de amigos
+    Route::get('/friends', [FriendTreeController::class, 'index'])->name('friends.app');
+
+    // Ruta para mostrar los detalles de un amigo, con nombre 'friendDetails'
+    Route::get('/friendDetails/{id}', [FriendTreeController::class, 'show'])->name('friendDetails');
+
+
+    Route::get('/editTree/{id}', [FriendTreeController::class, 'edit'])->name('tree.edit');
+
+
+    // Ruta para editar los detalles de un árbol (o de un amigo)
+    Route::get('/updateTree/{id}', [FriendTreeController::class, 'edit'])->name('updateTree');
+    Route::put('/updateTree/{id}', [FriendTreeController::class, 'update'])->name('tree.update');
+
+});
