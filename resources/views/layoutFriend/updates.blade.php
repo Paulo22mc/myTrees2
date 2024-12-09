@@ -21,22 +21,22 @@
     @include('layoutFriend.navbar')
 
     <div class="container mt-5">
-        <h2>Historial de Actualizaciones de Árboles</h2>
+        <h2>Tree Update History</h2>
 
 
         @if($updates->isEmpty())
-            <p>No tienes actualizaciones para mostrar.</p>
+            <p>You have no updates to show.</p>
         @else
 
             <div class="table-container">
                 <table class="table table-bordered table-striped">
                     <thead class="table-dark">
                         <tr>
-                            <th>Especie</th>
-                            <th>Tamaño</th>
-                            <th>Fecha de Actualización</th>
-                            <th>Foto</th>
-                            <th>Actualizado por</th>
+                            <th>Specie</th>
+                            <th>Size</th>
+                            <th>Date</th>
+                            <th>Photo</th>
+                            <th>Author</th>
                         </tr>
                     </thead>
                     <tbody>
