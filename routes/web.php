@@ -107,8 +107,11 @@ Route::middleware(['auth', RoleMiddleware::class . ':administrator'])->group(fun
     Route::get('/updateTree/{id}', [FriendTreeController::class, 'edit'])->name('updateTree');
     Route::put('/updateTree/{id}', [FriendTreeController::class, 'update'])->name('tree.update');
 
-    Route::post('updates/save', [TreeUpdatesController::class, 'save'])->name('updates.save');
+    // Mostrar el formulario para actualizar el árbol
+    Route::get('/tree-updates/save/{id}', [TreeUpdatesController::class, 'create'])->name('tree-updates.create');
 
+    // Guardar o actualizar el árbol
+    Route::post('/tree-updates/save', [TreeUpdatesController::class, 'save'])->name('tree-updates.save');
 });
 
 
