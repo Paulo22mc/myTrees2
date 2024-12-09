@@ -9,8 +9,18 @@ class TreeUpdates extends Model
 {
     use HasFactory;
 
-    protected $table = 'treeUpdates';
+    protected $table = 'updates';
     protected $fillable = ['idTree', 'idUser', 'date', 'size', 'photo'];
 
-    
+    public function tree()
+    {
+        return $this->belongsTo(TreeForSale::class, 'idTree');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'idUser');
+
+    }
+
 }
