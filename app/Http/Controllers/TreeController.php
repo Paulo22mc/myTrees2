@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\treeForSale;
 use App\Models\TreeSpecies;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+
 
 class TreeController extends Controller
 {
