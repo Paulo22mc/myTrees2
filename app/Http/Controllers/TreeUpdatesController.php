@@ -4,69 +4,55 @@ namespace App\Http\Controllers;
 
 use App\Models\TreeUpdates;
 use App\Models\TreeForSale;
-use App\Models\TreeSpecies;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+
 
 class TreeUpdatesController extends Controller
 {
-
-    public function edit($id)
+    // Mostrar todos los árboles vendidos
+    public function index()
     {
-        
-        $tree = TreeForSale::findOrFail($id);
-
-       
-        $species = TreeSpecies::all();
-
-     
-        return view('updates.update', compact('tree', 'species'));
+        // Obtener los árboles vendidos con el nombre comercial de treeSpecies
+        $trees = TreeForSale::join('treeSpecie', 'tree.idSpecie', '=', 'treeSpecie.id')
+            ->where('tree.status', 'sold') 
+            ->select('tree.*', 'treeSpecie.comercialName') 
+            ->get();
+        $trees = TreeForSale::with('specie')->where('status', 'sold')->get();
+        return view('updates.main', compact('trees'));
     }
 
- 
-    public function update(Request $request, $id)
+    public function create($idTree)
     {
-        
+        $tree = TreeForSale::findOrFail($idTree);
+        return view('updates.update', compact('tree'));
+    }
+    // Guardar la actualización en la tabla TreeUpdates
+    public function save(Request $request)
+    {
+        // Validación de datos
         $request->validate([
-            'idSpecie' => 'required|exists:tree_species,id', 
+            'idTree' => 'required|exists:tree,id',
             'size' => 'required|numeric|min:1',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', 
+            'photo' => 'required|image|max:2048',
         ]);
-
         
-        $tree = TreeForSale::findOrFail($id);
 
-       
-        $tree->idSpecie = $request->idSpecie;
-        $tree->size = $request->size;
+        $photoPath = $request->file('photo')->store('photos', 'public');
 
-        
-        if ($request->hasFile('photo')) {
-            
-            if ($tree->photo) {
-                Storage::delete('public/' . $tree->photo);
-            }
+        $idUser = Auth::id();
 
-           
-            $photoPath = $request->file('photo')->store('tree_photos', 'public');
-            $tree->photo = $photoPath;
-        }
-
-       
-        $tree->save();
-
-        
+        // Crear la actualización
         TreeUpdates::create([
-            'idTree' => $tree->id,
-            'idUser' => Auth::id(), 
-            'date' => now(), 
-            'size' => $tree->size,
-            'photo' => $tree->photo,
+            'idTree' => $request->idTree,
+            'idUser' => $idUser,
+            'date' => now(),
+            'size' => $request->size,
+            'photo' => $photoPath,
         ]);
 
-       
-        return redirect()->route('tree.details', ['id' => $tree->id])
-            ->with('success', 'Tree updated successfully!');
+        // Redirigir al usuario con un mensaje de éxito
+        return redirect()->route('updates.main')->with('success', 'Actualización guardada con éxito.');
     }
 }
