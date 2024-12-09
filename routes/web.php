@@ -110,16 +110,16 @@ Route::middleware(['auth', RoleMiddleware::class . ':administrator'])->group(fun
 
 
 
-    Route::get('/TreeUpdates/create', [TreeUpdatesController::class, 'create'])->name('updates.create');
-    Route::post('/TreeUpdates', [TreeUpdatesController::class, 'store'])->name('updates.store');
+    // Ver árboles vendidos
+    Route::get('/updates/main', [TreeUpdatesController::class, 'index'])->name('updates.main');
+        
+    // Crear una nueva actualización para un árbol
+    Route::get('/updates/{idTree}/create', [TreeUpdatesController::class, 'create'])->name('updates.create');
 
-    Route::post('/TreeUpdates', [TreeUpdatesController::class, 'save'])->name('updates.save');
+    // Guardar la actualización en la base de datos
+    Route::post('/updates/save', [TreeUpdatesController::class, 'save'])->name('TreeUpdates.save');
 
-    // nueva prueba la puta madre
-    Route::get('/updates/{id}', [TreeUpdatesController::class, 'edit'])->name('updates.edit');
-    Route::put('/updates/{id}', [TreeUpdatesController::class, 'update'])->name('updates.update');
-    
-    
+
 });
 
 
