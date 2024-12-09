@@ -11,27 +11,24 @@ use Illuminate\Support\Facades\Auth;
 
 class TreeUpdatesController extends Controller
 {
-    // Mostrar todos los árboles vendidos
     public function index()
     {
-        // Obtener los árboles vendidos con el nombre comercial de treeSpecies
-        $trees = TreeForSale::join('treeSpecie', 'tree.idSpecie', '=', 'treeSpecie.id')
-            ->where('tree.status', 'sold') 
-            ->select('tree.*', 'treeSpecie.comercialName') 
+        $trees = TreeForSale::with('specie')
+            ->where('status', 'sold')
             ->get();
-        $trees = TreeForSale::with('specie')->where('status', 'sold')->get();
+    
         return view('updates.main', compact('trees'));
     }
+    
 
     public function create($idTree)
     {
         $tree = TreeForSale::findOrFail($idTree);
         return view('updates.update', compact('tree'));
     }
-    // Guardar la actualización en la tabla TreeUpdates
+   
     public function save(Request $request)
     {
-        // Validación de datos
         $request->validate([
             'idTree' => 'required|exists:tree,id',
             'size' => 'required|numeric|min:1',
@@ -43,7 +40,7 @@ class TreeUpdatesController extends Controller
 
         $idUser = Auth::id();
 
-        // Crear la actualización
+     
         TreeUpdates::create([
             'idTree' => $request->idTree,
             'idUser' => $idUser,
@@ -52,7 +49,16 @@ class TreeUpdatesController extends Controller
             'photo' => $photoPath,
         ]);
 
-        // Redirigir al usuario con un mensaje de éxito
         return redirect()->route('updates.main')->with('success', 'Actualización guardada con éxito.');
+    }
+
+    //show updates
+    public function showUpdates()
+    {
+        // Obtener todos los registros de actualizaciones
+        $updates = TreeUpdates::all();
+
+        // Pasar los registros a la vista
+        return view('updates.show', compact('updates'));
     }
 }
