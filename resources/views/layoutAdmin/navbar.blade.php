@@ -13,6 +13,8 @@
         <li><a href="{{route('AddUsers.main')}}" class="navbar__link">Add Users</a></li>
         <li><a href="{{route('treeSpecie.create')}}" class="navbar__link">Trees species</a></li>
         <li><a href="{{route('treeForSale.create')}}" class="navbar__link">Trees for sale</a></li>
+        <li><a href="{{route('updates.main')}}" class="navbar__link">Updates</a></li>
+
         <li>
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                 @csrf
