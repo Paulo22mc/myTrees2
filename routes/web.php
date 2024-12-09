@@ -112,7 +112,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':administrator'])->group(fun
 
     // Ver árboles vendidos
     Route::get('/updates/main', [TreeUpdatesController::class, 'index'])->name('updates.main');
-        
+
     // Crear una nueva actualización para un árbol
     Route::get('/updates/{idTree}/create', [TreeUpdatesController::class, 'create'])->name('updates.create');
 
@@ -121,8 +121,6 @@ Route::middleware(['auth', RoleMiddleware::class . ':administrator'])->group(fun
 
     //ver todos los updates
     Route::get('/tree-updates', [TreeUpdatesController::class, 'showUpdates'])->name('updates.show');
-
-
 });
 
 
@@ -131,6 +129,19 @@ Route::middleware(['auth', RoleMiddleware::class . ':operator'])->group(function
 
     //Mostrar dashboard de operator
     Route::get('/operator/dashboard', [OperatorController::class, 'showMainView'])->name('operator.dashboard');
+
+    // Ver árboles vendidos
+    Route::get('/updatesOperator/main', [OperatorController::class, 'index'])->name('updatesOperator.main');
+
+    // Crear una nueva actualización para un árbol
+    Route::get('/updatesOperator/{idTree}/create', [OperatorController::class, 'create'])->name('updatesOperator.create');
+
+    // Guardar la actualización en la base de datos
+    Route::post('/updatesOperator/save', [OperatorController::class, 'save'])->name('TreeUpdatesOperator.save');
+
+    //ver todos los updates
+    Route::get('/tree-updatesOperator', [OperatorController::class, 'showUpdates'])->name('updatesOperator.show');
+ 
 });
 
 
