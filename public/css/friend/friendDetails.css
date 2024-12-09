@@ -1,4 +1,5 @@
-body {
+/* Encapsular los estilos dentro de una clase principal */
+.edit-tree-form {
     font-family: 'Arial', sans-serif;
     background-color: #f4f8f3;
     margin: 0;
@@ -10,7 +11,7 @@ body {
     overflow-y: auto; /* Habilitar el scroll vertical */
 }
 
-h2 {
+.edit-tree-form h2 {
     text-align: center;
     color: #4caf50;
     margin-bottom: 20px;
@@ -19,7 +20,7 @@ h2 {
     text-transform: uppercase;
 }
 
-form {
+.edit-tree-form form {
     background-color: rgba(0, 0, 0, 0.75); /* Fondo oscuro y transparente */
     padding: 30px;
     border-radius: 10px;
@@ -33,20 +34,22 @@ form {
     margin-top: 20px; /* Ajustar margen superior */
 }
 
-
-.form-group {
+.edit-tree-form .form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-label {
+.edit-tree-form label {
     font-size: 14px;
     color: #bbb;
     font-weight: 600;
 }
 
-input[type="text"], input[type="number"], select, input[type="file"] {
+.edit-tree-form input[type="text"],
+.edit-tree-form input[type="number"],
+.edit-tree-form select,
+.edit-tree-form input[type="file"] {
     padding: 12px;
     font-size: 14px;
     border: 1px solid #ddd;
@@ -56,36 +59,39 @@ input[type="text"], input[type="number"], select, input[type="file"] {
     transition: all 0.3s ease;
 }
 
-input[type="text"]:focus, input[type="number"]:focus, select:focus, input[type="file"]:focus {
+.edit-tree-form input[type="text"]:focus,
+.edit-tree-form input[type="number"]:focus,
+.edit-tree-form select:focus,
+.edit-tree-form input[type="file"]:focus {
     border-color: #4caf50;
     box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
     background-color: #444;
 }
 
-.radio-group {
+.edit-tree-form .radio-group {
     display: flex;
     gap: 20px;
     margin-top: 10px;
 }
 
-.radio-group input[type="radio"] {
+.edit-tree-form .radio-group input[type="radio"] {
     transform: scale(1.2);
 }
 
-.tree-photo-preview {
+.edit-tree-form .tree-photo-preview {
     margin-top: 10px;
     max-width: 100%;
     height: auto;
     border-radius: 6px;
 }
 
-.form-buttons {
+.edit-tree-form .form-buttons {
     display: flex;
     justify-content: space-between;
     gap: 15px;
 }
 
-.action-button {
+.edit-tree-form .action-button {
     padding: 12px 18px;
     background-color: #4caf50;
     color: white;
@@ -96,11 +102,11 @@ input[type="text"]:focus, input[type="number"]:focus, select:focus, input[type="
     transition: background-color 0.3s ease;
 }
 
-.action-button:hover {
+.edit-tree-form .action-button:hover {
     background-color: #388e3c;
 }
 
-a.cancel-button {
+.edit-tree-form a.cancel-button {
     padding: 12px 18px;
     background-color: #ccc;
     color: white;
@@ -111,6 +117,6 @@ a.cancel-button {
     transition: background-color 0.3s ease;
 }
 
-a.cancel-button:hover {
+.edit-tree-form a.cancel-button:hover {
     background-color: #999;
 }

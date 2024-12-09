@@ -1,0 +1,88 @@
+/* Estilos para el formulario de edición de árbol */
+.tree-edit-form {
+    font-family: 'Arial', sans-serif;
+    background-color: rgba(0, 0, 0, 0.75); /* Fondo negro transparente */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin: 20px auto;
+    color: white; /* Cambiar texto a blanco para contraste */
+}
+
+.tree-edit-form h2 {
+    text-align: center;
+    color: #4caf50;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tree-edit-form .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tree-edit-form label {
+    font-size: 14px;
+    color: #bbb;
+    font-weight: 600;
+}
+
+.tree-edit-form select, 
+.tree-edit-form input[type="text"], 
+.tree-edit-form input[type="number"], 
+.tree-edit-form input[type="radio"] {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #333;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.tree-edit-form select:focus, 
+.tree-edit-form input[type="text"]:focus, 
+.tree-edit-form input[type="number"]:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+    background-color: #444;
+}
+
+.tree-edit-form .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.tree-edit-form .save-button {
+    padding: 12px 18px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tree-edit-form .save-button:hover {
+    background-color: #388e3c;
+}
+
+.tree-edit-form .cancel-button {
+    padding: 12px 18px;
+    background-color: #ccc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.tree-edit-form .cancel-button:hover {
+    background-color: #999;
+}

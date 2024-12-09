@@ -1,0 +1,59 @@
+/* Estilos para la página de actualizaciones de árboles con fondo negro transparente */
+.tree-updates-page {
+    font-family: 'Arial', sans-serif;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro transparente */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 20px auto;
+    color: white; /* Asegura que el texto sea blanco sobre el fondo oscuro */
+}
+
+.tree-updates-page h2 {
+    text-align: center;
+    color: #4caf50;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.tree-updates-page .table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tree-updates-page table th, 
+.tree-updates-page table td {
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.tree-updates-page table th {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+}
+
+.tree-updates-page table tr:hover {
+    background-color: #f1f9ff;
+}
+
+.tree-updates-page .back-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.tree-updates-page .back-link:hover {
+    text-decoration: underline;
+    color: #388e3c;
+}
