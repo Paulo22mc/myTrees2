@@ -12,14 +12,5 @@ class TreeUpdates extends Model
     protected $table = 'treeUpdates';
     protected $fillable = ['idTree', 'idUser', 'date', 'size', 'photo'];
 
-    // Relaciones (opcional)
-    public function tree()
-    {
-        return $this->belongsTo(treeForSale::class, 'idTree');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'idUser');
-    }
+    
 }
