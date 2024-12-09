@@ -5,17 +5,27 @@
         <div class="form-container">
             <h2>Register New Tree Species</h2>
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('treeSpecie.save') }}" method="POST">
                 @csrf
 
                 <div class="input-contenedor">
                     <label for="comercialName">Comercial Name</label>
-                    <input type="text" name="comercialName" id="comercialName" required>
+                    <input type="text" name="comercialName" id="comercialName" value="{{ old('comercialName') }}" required>
                 </div>
 
                 <div class="input-contenedor">
                     <label for="scientificName">Scientific Name</label>
-                    <input type="text" name="scientificName" id="scientificName" required>
+                    <input type="text" name="scientificName" id="scientificName" value="{{ old('scientificName') }}" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
