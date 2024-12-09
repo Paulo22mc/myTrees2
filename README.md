@@ -1,66 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aplicación Web para la Asociación de Amigos de Un Millón de Árboles 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Objetivo
+Este proyecto tiene como objetivo desarrollar una aplicación web utilizando **Laravel** para apoyar la recaudación de fondos en beneficio de las iniciativas de reforestación de la Asociación de Amigos de Un Millón de Árboles. La aplicación también forma parte de un ejercicio de clase para fortalecer habilidades en programación web, especialmente en el uso de Laravel y el patrón de diseño **MVC** (Modelo-Vista-Controlador).
 
-## About Laravel
+## Descripción del Proyecto
+La aplicación permite a la Asociación administrar sus especies de árboles y gestionar las ventas de árboles a través de tres tipos de usuarios:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. **Administrador**: Puede gestionar todas las funciones internas de la aplicación, como el seguimiento de especies de árboles, administración de ventas, y supervisión de las actualizaciones de estado de cada árbol.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. **Operador**: Tiene acceso a la gestión y actualización de los árboles, incluyendo la actualización del estado, tamaño y otras características de los árboles. Este rol tiene permisos similares al del Administrador para realizar actualizaciones, pero no tiene acceso a funciones críticas como la gestión de usuarios o configuraciones globales.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. **Amigo**: Los usuarios registrados como "Amigos" pueden ver los árboles disponibles y solicitar la compra de aquellos en estado "Disponible". También pueden ver los árboles que han adquirido, pero sin posibilidad de editarlos.
 
-## Learning Laravel
+### Funcionalidades
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Para el Administrador
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Dashboard**: Muestra estadísticas clave como:
+  - Cantidad de amigos registrados.
+  - Cantidad de árboles disponibles.
+  - Cantidad de árboles vendidos.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Gestión de Especies de Árboles**: Permite realizar operaciones CRUD (crear, leer, actualizar y eliminar) sobre las especies, incluyendo el nombre comercial y científico de cada árbol.
 
-## Laravel Sponsors
+- **Gestión de Árboles de Amigos**:
+  - Visualizar los árboles registrados por cada amigo.
+  - Editar los árboles de un amigo, incluyendo tamaño, especie, ubicación y estado (disponible o vendido).
+  - Registrar actualizaciones de árboles para llevar un control del tamaño actual y estado.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Gestión de Árboles en Venta**:
+  - Permite crear un nuevo árbol disponible para la venta, especificando la especie, ubicación, estado, precio y una foto.
 
-### Premium Partners
+- **Cerrar Sesión**: Función para que el administrador pueda cerrar sesión de manera segura.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### Para el Operador
 
-## Contributing
+- **Gestión y Actualización de Árboles**:
+  - El operador tiene acceso a la sección de actualizaciones de los árboles. Puede modificar los detalles de los árboles como el tamaño, especie, ubicación y estado (disponible o vendido).
+  - El operador puede registrar actualizaciones del estado de cada árbol y supervisar su evolución en cuanto a tamaño y condición.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Para el Amigo
 
-## Code of Conduct
+- **Registro**: Los amigos deben registrarse con su nombre, apellidos, teléfono, correo, dirección y país.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **Compra de Árboles**:
+  - Visualizan la lista de árboles disponibles y pueden solicitar la compra de uno de estos.
+  - Al realizar una compra, el árbol seleccionado cambia su estado a "Vendido".
 
-## Security Vulnerabilities
+- **Listado de Árboles Adquiridos**:
+  - Pueden ver un listado de los árboles que han comprado, junto con la información del árbol y las fotos. Esta vista es solo de lectura.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Funcionalidad Adicional - Cronjob
 
-## License
+Se desarrolló un cronjob que revisa los árboles cuya última actualización fue hace más de un mes. Si encuentra alguno, envía un correo al administrador solicitando una actualización. El correo incluye una lista con los nombres de los árboles que necesitan actualización.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Tecnología Utilizada
+
+- **Laravel**: Se utilizó el framework Laravel para el desarrollo de la aplicación, aprovechando sus características como la gestión de rutas, controladores, autenticación, y el sistema de migraciones para la base de datos.
+
+- **MVC (Modelo-Vista-Controlador)**: La aplicación sigue el patrón de diseño **MVC** para separar claramente la lógica de negocio (Modelo), la presentación (Vista) y la gestión de las interacciones del usuario (Controlador). Esto facilita el mantenimiento y escalabilidad de la aplicación.
+
+## Contacto
+**Institución:** Universidad Técnica Nacional  
+**Correos:**  
+- avillegasmur23@gmail.com  
+- juanpaulomejias@outlook.com
