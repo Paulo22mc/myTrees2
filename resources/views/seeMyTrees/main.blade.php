@@ -32,7 +32,7 @@
             @foreach ($trees as $tree)
                 <tr>
                     <td><img src="{{ asset('storage/' . $tree->photo) }}" alt="Tree photo" width="100"></td>
-                    <td>{{ $tree->species->comercialName }}</td>
+                    <td>{{ $tree->specie->comercialName}}</td>
                     <td>{{ $tree->ubication }}</td>
                     <td>{{ $tree->status }}</td>
                     <td>{{ $tree->size }}</td>

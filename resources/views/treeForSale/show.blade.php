@@ -21,14 +21,13 @@
                     <th>Size</th>
                     <th>Price</th>
                     <th>Photo</th>
-                    <th>Publicado por</th>
                     <th>Acciones</th> <!-- Columna para botones de acción -->
                 </tr>
             </thead>
             <tbody>
                 @foreach($trees as $tree)
                     <tr>
-                        <td>{{ $tree->specie->name ?? 'Desconocida' }}</td>
+                        <td>{{ $tree->specie->comercialName ?? 'Desconocida' }}</td>
                         <td>{{ $tree->ubication }}</td>
                         <td>{{ $tree->size }} cm</td>
                         <td>${{ $tree->price }}</td>
@@ -39,7 +38,6 @@
                                 No photo
                             @endif
                         </td>
-                        <td>{{ $tree->friend->name ?? 'Anónimo' }}</td>
                         <td>
                             <!-- Enlace para editar -->
                             <a href="{{ route('treeForSale.edit', $tree->id) }}" class="btn btn-warning btn-sm">Editar</a>
