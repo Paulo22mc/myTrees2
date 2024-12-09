@@ -30,15 +30,16 @@
         </thead>
         <tbody>
             @foreach ($trees as $tree)
-                <tr>
-                    <td><img src="{{ asset('storage/' . $tree->photo) }}" alt="Tree photo" width="100"></td>
-                    <td>{{ $tree->specie->comercialName}}</td>
-                    <td>{{ $tree->ubication }}</td>
-                    <td>{{ $tree->status }}</td>
-                    <td>{{ $tree->size }}</td>
-                    <td>${{ number_format($tree->price, 2) }}</td>
-                </tr>
-            @endforeach
+            <tr>
+                <td><img src="{{ asset('storage/' . $tree->photo) }}" alt="Tree photo" width="100"></td>
+                <td>{{ $tree->comercialName }}</td>  <!-- Mostrar el comercialName -->
+                <td>{{ $tree->ubication }}</td>
+                <td>{{ $tree->status }}</td>
+                <td>{{ $tree->size }}</td>
+                <td>${{ number_format($tree->price, 2) }}</td>
+            </tr>
+        @endforeach
+        
         </tbody>
     </table>
 
