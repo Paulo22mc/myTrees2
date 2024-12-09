@@ -9,6 +9,7 @@ class TreeUpdates extends Model
 {
     use HasFactory;
 
+    protected $table = 'treeUpdates';
     protected $fillable = ['idTree', 'idUser', 'date', 'size', 'photo'];
 
     // Relaciones (opcional)
