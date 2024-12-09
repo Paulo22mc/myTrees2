@@ -115,6 +115,11 @@ Route::middleware(['auth', RoleMiddleware::class . ':administrator'])->group(fun
 
     Route::post('/TreeUpdates', [TreeUpdatesController::class, 'save'])->name('updates.save');
 
+    // nueva prueba la puta madre
+    Route::get('/updates/{id}', [TreeUpdatesController::class, 'edit'])->name('updates.edit');
+    Route::put('/updates/{id}', [TreeUpdatesController::class, 'update'])->name('updates.update');
+    
+    
 });
 
 
