@@ -17,6 +17,7 @@ use App\Http\Controllers\TreeUpdatesController;
 
 
 
+
 //RUTAS PARA USUARIO FRIEND
 Route::middleware(['auth', RoleMiddleware::class . ':friend'])->group(function () {
 
@@ -107,11 +108,13 @@ Route::middleware(['auth', RoleMiddleware::class . ':administrator'])->group(fun
     Route::get('/updateTree/{id}', [FriendTreeController::class, 'edit'])->name('updateTree');
     Route::put('/updateTree/{id}', [FriendTreeController::class, 'update'])->name('tree.update');
 
-    // Mostrar el formulario para actualizar el árbol
-    Route::get('/tree-updates/save/{id}', [TreeUpdatesController::class, 'create'])->name('tree-updates.create');
 
-    // Guardar o actualizar el árbol
-    Route::post('/tree-updates/save', [TreeUpdatesController::class, 'save'])->name('tree-updates.save');
+
+    Route::get('/TreeUpdates/create', [TreeUpdatesController::class, 'create'])->name('updates.create');
+    Route::post('/TreeUpdates', [TreeUpdatesController::class, 'store'])->name('updates.store');
+
+    Route::post('/TreeUpdates', [TreeUpdatesController::class, 'save'])->name('updates.save');
+
 });
 
 
