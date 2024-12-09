@@ -34,6 +34,8 @@ Route::middleware(['auth', RoleMiddleware::class . ':friend'])->group(function (
 
     //Ver "mis árboles"
     Route::get('/SeeMyTrees', [SeeMyTreesController::class, 'index'])->name('seeMyTrees.main');
+
+    Route::get('/friend-updates', [TreeUpdatesController::class, 'showFriendUpdates'])->name('friend.updates');
 });
 
 
