@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Trees 2</title>
     <link rel="stylesheet" href=" {{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/updateProcess.css') }}">
     <link rel="icon" href="{{ asset('images/icon.png') }}" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
 
 <body>
     @include('layoutOperator.navbar')
-    <div class="container">
+    <div class="update-tree-page">
         <h2>Update Tree </h2>
 
         <form action="{{ route('TreeUpdatesOperator.save') }}" method="POST" enctype="multipart/form-data">
@@ -23,7 +24,7 @@
             
             <div class="form-group">
                 <label for="size">Size</label>
-                <input type="number" name="size" id="size" class="form-control" required min="1"
+                <input type="number" name="size" id="size" class="form-control-size" required min="1"
                     step="0.01">
             </div>
 
@@ -33,7 +34,7 @@
             </div>
 
             
-            <button type="submit" class="btn btn-success">Save Update</button>
+            <button type="submit" class="btn">Save Update</button>
 
 
             @if ($errors->any())
@@ -47,7 +48,7 @@
             @endif
 
         </form>
-        <a href="{{route ('updatesOperator.main')}}">Cancel</a>
+        <a href="{{route ('updatesOperator.main')}}" class="back-link">Cancel</a>
     </div>
 
 </body>
