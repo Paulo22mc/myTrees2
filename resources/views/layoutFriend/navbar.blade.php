@@ -14,6 +14,7 @@
         @if (Auth::user() && Auth::user()->role !== 'administrator')
             <li><a href="{{ route('availableTrees.main') }}" class="navbar__link">Buy Tree</a></li>
             <li><a href="{{ route('seeMyTrees.main') }}" class="navbar__link">See My Trees</a></li>
+            <li><a href="{{ route('friend.updates') }}" class="navbar__link">See My Updates</a></li>
         @endif
         <li>
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
