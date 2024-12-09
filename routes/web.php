@@ -119,6 +119,9 @@ Route::middleware(['auth', RoleMiddleware::class . ':administrator'])->group(fun
     // Guardar la actualización en la base de datos
     Route::post('/updates/save', [TreeUpdatesController::class, 'save'])->name('TreeUpdates.save');
 
+    //ver todos los updates
+    Route::get('/tree-updates', [TreeUpdatesController::class, 'showUpdates'])->name('updates.show');
+
 
 });
 
