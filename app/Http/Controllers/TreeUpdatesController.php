@@ -2,43 +2,71 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TreeUpdate;
-use App\Models\Tree;
-use App\Models\treeForSale;
 use App\Models\TreeUpdates;
+use App\Models\TreeForSale;
+use App\Models\TreeSpecies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class TreeUpdatesController extends Controller
 {
-    // Muestra el formulario para actualizar el árbol
-    public function create()
+
+    public function edit($id)
     {
-        $trees = treeForSale::all(); 
-        return view('TreeUpdates.create', compact('trees'));
+        
+        $tree = TreeForSale::findOrFail($id);
+
+       
+        $species = TreeSpecies::all();
+
+     
+        return view('updates.update', compact('tree', 'species'));
     }
 
-    // Almacena la actualización del árbol
-    public function store(Request $request)
+ 
+    public function update(Request $request, $id)
     {
+        
         $request->validate([
-            'idTree' => 'required|exists:trees,id',
-            'size' => 'required|numeric',
-            'photo' => 'required|image',
+            'idSpecie' => 'required|exists:tree_species,id', 
+            'size' => 'required|numeric|min:1',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', 
         ]);
 
-        // Subir la foto y obtener el nombre del archivo
-        $photoPath = $request->file('photo')->store('photos', 'public');
+        
+        $tree = TreeForSale::findOrFail($id);
 
-        // Crear el registro en la tabla TreeUpdates
+       
+        $tree->idSpecie = $request->idSpecie;
+        $tree->size = $request->size;
+
+        
+        if ($request->hasFile('photo')) {
+            
+            if ($tree->photo) {
+                Storage::delete('public/' . $tree->photo);
+            }
+
+           
+            $photoPath = $request->file('photo')->store('tree_photos', 'public');
+            $tree->photo = $photoPath;
+        }
+
+       
+        $tree->save();
+
+        
         TreeUpdates::create([
-            'idTree' => $request->idTree,
+            'idTree' => $tree->id,
             'idUser' => Auth::id(), 
             'date' => now(), 
-            'size' => $request->size,
-            'photo' => $photoPath,
+            'size' => $tree->size,
+            'photo' => $tree->photo,
         ]);
 
-        return redirect()->route('TreeUpdates.create')->with('success', 'Actualización registrada correctamente');
+       
+        return redirect()->route('tree.details', ['id' => $tree->id])
+            ->with('success', 'Tree updated successfully!');
     }
 }
