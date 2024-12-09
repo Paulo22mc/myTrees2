@@ -13,6 +13,8 @@ use App\Http\Controllers\BuyFormController;
 use App\Http\Controllers\SeeMyTreesController;
 use App\Http\Controllers\FriendTreeController;
 use App\Http\Middleware\RoleMiddleware;
+use App\Http\Controllers\TreeUpdatesController;
+
 
 
 //RUTAS PARA USUARIO FRIEND
@@ -101,10 +103,12 @@ Route::middleware(['auth', RoleMiddleware::class . ':administrator'])->group(fun
 
     Route::get('/friends/{id}', [FriendTreeController::class, 'edit'])->name('friends.edit');
 
-
     // Ruta para editar los detalles de un árbol (o de un amigo)
     Route::get('/updateTree/{id}', [FriendTreeController::class, 'edit'])->name('updateTree');
     Route::put('/updateTree/{id}', [FriendTreeController::class, 'update'])->name('tree.update');
+
+    Route::post('updates/save', [TreeUpdatesController::class, 'save'])->name('updates.save');
+
 });
 
 
