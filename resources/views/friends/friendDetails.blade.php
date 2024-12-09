@@ -29,6 +29,7 @@
                         </td>
                         <td>
                             <a href="{{ route('friends.edit', ['id' => $tree->id]) }}" class="action-button">Edit</a>
+                            <a href="{{ route('updates.save', ['id' => $tree->id]) }}" class="action-button">Update</a>
                         </td>
                     </tr>
                 @endforeach
