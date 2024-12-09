@@ -16,17 +16,17 @@ class TreeUpdatesController extends Controller
         $trees = TreeForSale::with('specie')
             ->where('status', 'sold')
             ->get();
-    
+
         return view('updates.main', compact('trees'));
     }
-    
+
 
     public function create($idTree)
     {
         $tree = TreeForSale::findOrFail($idTree);
         return view('updates.update', compact('tree'));
     }
-   
+
     public function save(Request $request)
     {
         $request->validate([
@@ -34,13 +34,13 @@ class TreeUpdatesController extends Controller
             'size' => 'required|numeric|min:1',
             'photo' => 'required|image|max:2048',
         ]);
-        
+
 
         $photoPath = $request->file('photo')->store('photos', 'public');
 
         $idUser = Auth::id();
 
-     
+
         TreeUpdates::create([
             'idTree' => $request->idTree,
             'idUser' => $idUser,
@@ -55,10 +55,22 @@ class TreeUpdatesController extends Controller
     //show updates
     public function showUpdates()
     {
-        // Obtener todos los registros de actualizaciones
         $updates = TreeUpdates::all();
 
-        // Pasar los registros a la vista
         return view('updates.show', compact('updates'));
     }
+    public function showFriendUpdates()
+    {
+        $user = Auth::user();
+    
+        $updates = TreeUpdates::whereHas('tree', function ($query) use ($user) {
+            $query->where('idFriend', $user->id);
+        })->with('tree') 
+        ->get();
+    
+        // Pasar los registros filtrados a la vista
+        return view('layoutFriend.updates', compact('updates'));
+    }
+    
+    
 }
