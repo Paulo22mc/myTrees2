@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link rel="icon" href="{{ asset('images/icon.png') }}" type="image/png">
 
 </head>
+
 <body>
     @include('layoutAdmin.navbar')
 
@@ -30,7 +32,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="col-lg-3 col-md-4 col-12 mb-4">
                 <div class="card shadow-sm border-left-success card-shadow">
                     <div class="card-body text-center">
@@ -45,7 +47,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="col-lg-3 col-md-4 col-12 mb-4">
                 <div class="card shadow-sm border-left-danger card-shadow">
                     <div class="card-body text-center">
@@ -65,4 +67,5 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

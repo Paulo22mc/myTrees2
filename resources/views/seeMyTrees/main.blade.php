@@ -25,20 +25,19 @@
                 <th>Location</th>
                 <th>Status</th>
                 <th>Size</th>
-                <th>Price</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($trees as $tree)
-            <tr>
-                <td><img src="{{ asset('storage/' . $tree->photo) }}" alt="Tree photo" width="100"></td>
-                <td>{{ $tree->comercialName }}</td>  
-                <td>{{ $tree->ubication }}</td>
-                <td>{{ $tree->status }}</td>
-                <td>{{ $tree->size }}</td>
-            </tr>
-        @endforeach
-        
+                <tr>
+                    <td><img src="{{ asset('storage/' . $tree->photo) }}" alt="Tree photo" width="100"></td>
+                    <td>{{ $tree->comercialName }}</td>
+                    <td>{{ $tree->ubication }}</td>
+                    <td>{{ $tree->status }}</td>
+                    <td>{{ $tree->size }}</td>
+                </tr>
+            @endforeach
+
         </tbody>
     </table>
 

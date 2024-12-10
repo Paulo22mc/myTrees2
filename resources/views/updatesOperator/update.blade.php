@@ -18,10 +18,10 @@
 
         <form action="{{ route('TreeUpdatesOperator.save') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            
+
             <input type="hidden" name="idTree" value="{{ $tree->id }}">
 
-            
+
             <div class="form-group">
                 <label for="size">Size</label>
                 <input type="number" name="size" id="size" class="form-control-size" required min="1"
@@ -33,7 +33,7 @@
                 <input type="file" name="photo" id="photo" class="form-control" accept="image/*" required>
             </div>
 
-            
+
             <button type="submit" class="btn">Save Update</button>
 
 
@@ -48,7 +48,7 @@
             @endif
 
         </form>
-        <a href="{{route ('updatesOperator.main')}}" class="back-link">Cancel</a>
+        <a href="{{ route('updatesOperator.main') }}" class="back-link">Cancel</a>
     </div>
 
 </body>

@@ -5,7 +5,7 @@
 
     <form action="{{ route('treeForSale.update', $tree->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT') 
+        @method('PUT')
 
         <div class="form-group">
             <label for="treeSpecie">Tree Specie</label>
@@ -20,7 +20,8 @@
 
         <div class="form-group">
             <label for="ubication">Ubication</label>
-            <input type="text" name="ubication" class="form-control" value="{{ old('ubication', $tree->ubication) }}" required>
+            <input type="text" name="ubication" class="form-control" value="{{ old('ubication', $tree->ubication) }}"
+                required>
         </div>
 
         <div class="form-group">

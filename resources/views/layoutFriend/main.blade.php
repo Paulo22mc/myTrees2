@@ -1,4 +1,4 @@
-@extends('layoutFriend.app') 
+@extends('layoutFriend.app')
 
 @section('content')
     <div class="aboutUs">

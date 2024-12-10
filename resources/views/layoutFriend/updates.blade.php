@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +13,13 @@
         body {
             font-family: 'Roboto', sans-serif;
         }
+
         .table-container {
             margin-top: 40px;
         }
     </style>
 </head>
+
 <body>
     @include('layoutFriend.navbar')
 
@@ -24,10 +27,9 @@
         <h2>Tree Update History</h2>
 
 
-        @if($updates->isEmpty())
+        @if ($updates->isEmpty())
             <p>You have no updates to show.</p>
         @else
-
             <div class="table-container">
                 <table class="table table-bordered table-striped">
                     <thead class="table-dark">
@@ -46,7 +48,8 @@
                                 <td>{{ $update->size }} cm</td>
                                 <td>{{ \Carbon\Carbon::parse($update->date)->format('d/m/Y') }}</td>
                                 <td>
-                                    <img src="{{ Storage::url($update->photo) }}" alt="Foto del árbol" class="img-fluid" style="max-width: 100px;">
+                                    <img src="{{ Storage::url($update->photo) }}" alt="Foto del árbol" class="img-fluid"
+                                        style="max-width: 100px;">
                                 </td>
                                 <td>{{ $update->user->name }}</td>
                             </tr>
@@ -58,4 +61,5 @@
     </div>
 
 </body>
+
 </html>

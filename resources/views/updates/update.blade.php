@@ -23,7 +23,8 @@
 
             <div class="form-group">
                 <label for="size">Size</label>
-                <input type="number" name="size" id="size" class="form-control-size" required min="1" step="0.01">
+                <input type="number" name="size" id="size" class="form-control-size" required min="1"
+                    step="0.01">
             </div>
 
             <div class="form-group">

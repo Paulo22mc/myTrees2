@@ -1,8 +1,8 @@
 @extends('friends.app')
 
 @section('content')
-    
-    <form action="{{ route('tree.update', ['id' => $tree->id]) }}" method="POST" enctype="multipart/form-data" class="tree-edit-form">
+    <form action="{{ route('tree.update', ['id' => $tree->id]) }}" method="POST" enctype="multipart/form-data"
+        class="tree-edit-form">
         @csrf
         @method('PUT')
 
@@ -10,8 +10,7 @@
             <label for="idSpecie">Species</label>
             <select id="idSpecie" name="idSpecie" required>
                 @foreach ($species as $specie)
-                    <option value="{{ $specie->id }}" 
-                            {{ $tree->idSpecie == $specie->id ? 'selected' : '' }}>
+                    <option value="{{ $specie->id }}" {{ $tree->idSpecie == $specie->id ? 'selected' : '' }}>
                         {{ $specie->comercialName }}
                     </option>
                 @endforeach
@@ -32,13 +31,12 @@
             <label for="status">Status</label>
             <div>
                 <label>
-                    <input type="radio" name="status" value="available" 
+                    <input type="radio" name="status" value="available"
                         {{ $tree->status == 'available' ? 'checked' : '' }}>
                     Available
                 </label>
                 <label>
-                    <input type="radio" name="status" value="sold" 
-                        {{ $tree->status == 'sold' ? 'checked' : '' }}>
+                    <input type="radio" name="status" value="sold" {{ $tree->status == 'sold' ? 'checked' : '' }}>
                     Sold
                 </label>
             </div>

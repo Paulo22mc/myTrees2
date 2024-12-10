@@ -22,7 +22,7 @@
             <thead>
                 <tr>
                     <th>Photo</th>
-                    <th>Specie</th> 
+                    <th>Specie</th>
                     <th>Ubication</th>
                     <th>Size</th>
                     <th>Price</th>
@@ -42,7 +42,7 @@
                         <td>
                             <a href="{{ route('BuyForm.main', ['id' => $tree->id]) }}" class="btn btn-primary">
                                 Buy Now
-                            </a> 
+                            </a>
                         </td>
                     </tr>
                 @endforeach

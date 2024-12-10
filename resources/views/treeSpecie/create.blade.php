@@ -25,7 +25,8 @@
 
                 <div class="input-contenedor">
                     <label for="scientificName">Scientific Name</label>
-                    <input type="text" name="scientificName" id="scientificName" value="{{ old('scientificName') }}" required>
+                    <input type="text" name="scientificName" id="scientificName" value="{{ old('scientificName') }}"
+                        required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>

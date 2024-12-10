@@ -19,21 +19,22 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($trees as $tree)
-                <tr>
-                    <td>{{ $tree->comercialName }}</td>
-                    <td>{{ $tree->scientificName }}</td>
-                    <td>
-                        <a href="{{ route('treeSpecie.edit', ['id' => $tree->id]) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('treeSpecie.destroy', $tree->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this species?')">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-            
+                @foreach ($trees as $tree)
+                    <tr>
+                        <td>{{ $tree->comercialName }}</td>
+                        <td>{{ $tree->scientificName }}</td>
+                        <td>
+                            <a href="{{ route('treeSpecie.edit', ['id' => $tree->id]) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route('treeSpecie.destroy', $tree->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete this species?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+
 
             </tbody>
         </table>

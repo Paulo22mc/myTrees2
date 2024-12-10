@@ -31,21 +31,21 @@
             </thead>
             <tbody>
                 @foreach ($updates as $update)
-                <tr>
-                    <td>{{ $update->id }}</td>
-                    <td>{{ $update->idTree }}</td>
-                    <td>{{ $update->user->name }} {{ $update->user->lastname }}</td> 
-                    <td>{{ $update->size }} cm</td>
-                    <td>
-                        <img src="{{ asset('storage/' . $update->photo) }}" alt="Photo" width="100">
-                    </td>
-                    <td>{{ $update->date }}</td>
-                </tr>
-            @endforeach
-            
+                    <tr>
+                        <td>{{ $update->id }}</td>
+                        <td>{{ $update->idTree }}</td>
+                        <td>{{ $update->user->name }} {{ $update->user->lastname }}</td>
+                        <td>{{ $update->size }} cm</td>
+                        <td>
+                            <img src="{{ asset('storage/' . $update->photo) }}" alt="Photo" width="100">
+                        </td>
+                        <td>{{ $update->date }}</td>
+                    </tr>
+                @endforeach
+
             </tbody>
         </table>
-        <a href="{{route ('updatesOperator.main')}}" class="back-link">Back</a>
+        <a href="{{ route('updatesOperator.main') }}" class="back-link">Back</a>
     </div>
 
 </body>
