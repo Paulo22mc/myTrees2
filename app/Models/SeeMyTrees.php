@@ -11,6 +11,7 @@ class SeeMyTrees extends Model
 
     protected $table = 'tree';
 
+    // Relación con TreeSpecies (especie)
     public function species()
     {
         return $this->belongsTo(TreeSpecies::class, 'idSpecie', 'id');

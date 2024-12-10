@@ -9,8 +9,8 @@ use App\Models\treeForSale;
 
 class AdminController extends Controller
 {
-    //
 
+    //Mostrar estadisticas para el admin
     public function showMainView()
     {
 

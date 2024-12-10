@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class AddUsersController extends Controller
 {
+    //Valida los datos y registra un nuevo usuario.
     public function register(Request $request)
     {
 
@@ -37,11 +38,13 @@ class AddUsersController extends Controller
     }
 
 
+    //Muestra la página principal para gestión de usuarios.
     public function addUsers()
     {
         return view('AddUsers.main');
     }
 
+    //Lista los usuarios con roles operator y administrator.
     public function show()
     {
         // Obtener usuarios con roles 'operator' y 'administrator'
@@ -50,12 +53,14 @@ class AddUsersController extends Controller
         return view('AddUsers.show', compact('users'));
     }
 
+    //Muestra el formulario para editar un usuario.
     public function edit($id)
     {
         $user = User::findOrFail($id);
         return view('AddUsers.edit', compact('user'));
     }
 
+    //Valida y actualiza los datos de un usuario existente.
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -74,7 +79,7 @@ class AddUsersController extends Controller
         return redirect('/users')->with('success', 'User updated successfully.');
     }
 
-
+    //Elimina un usuario
     public function destroy($id)
     {
         $user = User::findOrFail($id);

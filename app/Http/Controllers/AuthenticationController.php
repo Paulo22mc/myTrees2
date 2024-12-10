@@ -15,11 +15,6 @@ class AuthenticationController extends Controller
     }
 
     // Manejar el login
-    /**
-     * Summary of authenticate
-     * @param \Illuminate\Http\Request $request
-     * @return mixed|\Illuminate\Http\RedirectResponse
-     */
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
@@ -31,22 +26,20 @@ class AuthenticationController extends Controller
 
             $request->session()->regenerate();
 
-      
+
             $user = Auth::user();
 
             if ($user->role === 'administrator') {
                 return redirect()->route('admin.dashboard');
             } elseif ($user->role === 'operator') {
-                return redirect()->route('operator.dashboard'); 
+                return redirect()->route('operator.dashboard');
             } elseif ($user->role === 'friend') {
-                return redirect()->route('friend.dashboard'); 
+                return redirect()->route('friend.dashboard');
             }
 
             Auth::logout();
             return redirect()->route('login')->withErrors(['error' => 'Rol no válido.']);
         }
-
-        
         return back()->withErrors([
             'email' => 'Las credenciales ingresadas no coinciden con nuestros registros.',
         ]);
@@ -54,24 +47,20 @@ class AuthenticationController extends Controller
 
 
     // Manejar el logout 
-    /**
-     * Summary of logout
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function logout(Request $request)
     {
-        Auth::logout(); // Cierra la sesión
-    
+        Auth::logout();
+
         // Invalida la sesión actual
         $request->session()->invalidate();
-    
+
         // Regenera el token CSRF
         $request->session()->regenerateToken();
-    
+
         // Redirige al usuario a la página principal
         return redirect('/');
     }
-    
+
 
     // Mostrar el formulario de registro
     public function showRegistrationForm()
@@ -79,6 +68,7 @@ class AuthenticationController extends Controller
         return view('register');
     }
 
+    //Registrar un usuario amigo
     public function register(Request $request)
     {
         $request->validate([

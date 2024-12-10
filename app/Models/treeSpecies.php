@@ -20,7 +20,7 @@ class TreeSpecies extends Model
         'scientificName'
     ];
 
-    // Relación con los árboles en venta
+    // Relación con  tree (árboles en venta)
     public function trees()
     {
         return $this->hasMany(TreeForSale::class, 'idSpecie', 'id');

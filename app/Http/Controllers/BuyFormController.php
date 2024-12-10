@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class BuyFormController extends Controller
 {
+    //Motrar el formulario de compra 
     public function showBuyForm($id)
     {
         $user = Auth::user();
@@ -26,33 +27,30 @@ class BuyFormController extends Controller
         return view('Buyform.main', compact('tree', 'user'));
     }
 
-
-
+    //Confirmar la compra y cambiar los datos para que esté "vendido"
     public function confirmPurchase(Request $request)
     {
         $buyerId = Auth::id();
-    
+
         if (!$buyerId) {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para realizar esta acción.');
         }
-    
+
         $request->validate([
             'treeId' => 'required|exists:tree,id',
         ]);
-    
+
         $tree = treeForSale::find($request->treeId);
-    
+
         if (!$tree || $tree->status === 'sold') {
             return redirect()->route('BuyForm.main', $request->treeId)->with('error', 'Este árbol ya ha sido vendido.');
         }
-        
+
         $tree->update([
-            'idFriend' => $buyerId,  
-            'status' => 'sold',      
+            'idFriend' => $buyerId,
+            'status' => 'sold',
         ]);
-    
+
         return redirect()->route('availableTrees.main', $request->treeId)->with('success', 'Árbol comprado con éxito.');
     }
-    
-    
 }

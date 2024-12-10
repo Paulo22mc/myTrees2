@@ -20,11 +20,13 @@ class BuyForm extends Model
       'photo'
    ];
 
+   // Relación con TreeSpecies (especie)
    public function specie()
    {
        return $this->belongsTo(TreeSpecies::class, 'idSpecie');
    }
 
+   // Relación con Users 
    public function friend()
    {
        return $this->belongsTo(User::class, 'idFriend');

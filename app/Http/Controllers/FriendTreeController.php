@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class FriendTreeController extends Controller
 {
+    //Muestra los usuarios amigos
     public function index()
     {
         $friends = User::where('role', 'friend')->get();
-
         return view('friends.index', compact('friends'));
     }
 
+    //Muestra los árboles asociados a un amigo por su id 
     public function show($id)
     {
         $friend = User::findOrFail($id);
@@ -30,26 +31,24 @@ class FriendTreeController extends Controller
         return view('friends.friendDetails', compact('friend', 'trees'));
     }
 
+    //Editar un árbol especifico 
     public function edit($id)
     {
         $tree = treeForSale::findOrFail($id);
-
         $species = TreeSpecies::all();
 
         return view('friends.edit', compact('tree', 'species'));
     }
 
+    //Actualiza el árbol con un id especifico 
     public function update(Request $request, $id)
     {
-        // Encuentra el árbol por ID
         $tree = treeForSale::findOrFail($id);
-
         $tree->idSpecie = $request->input('idSpecie');
         $tree->size = $request->input('size');
         $tree->ubication = $request->input('ubication');
         $tree->status = $request->input('status');
 
-        // Guarda los cambios
         $tree->save();
 
         return redirect()->route('friendDetails', ['id' => $tree->idFriend])

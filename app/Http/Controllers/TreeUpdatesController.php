@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TreeUpdatesController extends Controller
 {
+    //Mostrar los árboles vendidos (para poder hacerles actulizaciones)
     public function index()
     {
         $trees = TreeForSale::with('specie')
@@ -20,13 +21,14 @@ class TreeUpdatesController extends Controller
         return view('updates.main', compact('trees'));
     }
 
-
+    //Redirigir a la ventana de crear una nueva actualización
     public function create($idTree)
     {
         $tree = TreeForSale::findOrFail($idTree);
         return view('updates.update', compact('tree'));
     }
 
+    //Guardar una actualización
     public function save(Request $request)
     {
         $request->validate([
@@ -35,11 +37,8 @@ class TreeUpdatesController extends Controller
             'photo' => 'required|image|max:2048',
         ]);
 
-
         $photoPath = $request->file('photo')->store('photos', 'public');
-
         $idUser = Auth::id();
-
 
         TreeUpdates::create([
             'idTree' => $request->idTree,
@@ -52,25 +51,24 @@ class TreeUpdatesController extends Controller
         return redirect()->route('updates.main')->with('success', 'Actualización guardada con éxito.');
     }
 
-    //show updates
+    //Mostrar una actualización de un árbol
     public function showUpdates()
     {
         $updates = TreeUpdates::all();
-
         return view('updates.show', compact('updates'));
     }
+
+
+    //Mostrar las actualizaciones de los árboles del usuario amigo
     public function showFriendUpdates()
     {
         $user = Auth::user();
-    
+
         $updates = TreeUpdates::whereHas('tree', function ($query) use ($user) {
             $query->where('idFriend', $user->id);
-        })->with('tree') 
-        ->get();
-    
-        // Pasar los registros filtrados a la vista
+        })->with('tree')
+            ->get();
+
         return view('layoutFriend.updates', compact('updates'));
     }
-    
-    
 }

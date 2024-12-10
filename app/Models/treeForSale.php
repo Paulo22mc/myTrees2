@@ -19,11 +19,13 @@ class treeForSale extends Model
         'photo'
     ];
 
+    // Relación con TreeSpecies (especie)
     public function specie()
     {
         return $this->belongsTo(TreeSpecies::class, 'idSpecie');
     }
 
+    // Relación con User
     public function friend()
     {
         return $this->belongsTo(User::class, 'idFriend');
